@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    <link rel="stylesheet" href="/css/fonts.css">
+    <link rel="stylesheet" href="/css/color.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/start.css">
+    <script src="./js/storage.js"></script>
+    <script src="./js/start.js"></script>
+    <title>JOIN</title>
+</head>
+<body tabindex="0">
+    <!-- Animation-Page -->
+    <div class="slide" id="slide">
+        <img class="slidelogo" src="./img/Logo_big_wh.png">
+    </div>
+    <!-- Login-Page -->
+    <div class="login" id="login">
+        <div class="signup-link-box">
+            <span class="standard-text">Not a Join user?</span>
+            <button class="btn-primary" onclick="openIt('signup')">Sign up</button>
+        </div>
+        <div class="legalnotice-link-box">
+            <a href="privacypolicy.html" class="link-text">Privacy Policy</a><a href="legalnotice.html" class="link-text">Legal Notice</a>
+        </div>
+        <div class="login-formular-box">
+            <form class="login-form" action="login(); return false;" autocomplete="off">
+                <div class="login-title-box">
+                    <span class="login-title">Log in</span>
+                </div>
+                <div class="login-fields">
+                    <div class="login-input-fields">
+                        <div class="input-box">
+                            <input type="email" name="email" id="login-email" class="input" placeholder="Email" autocomplete="off" required>
+                            <img src="./img/icon_mail.png">
+                        </div>
+                        <div class="input-box">
+                            <input type="password" name="password" id="login-password" class="input" placeholder="Password" autocomplete="off" required>
+                            <img src="./img/icon_lock.png"><span>Wrong password Ups! Try again.</span>
+                        </div>
+                    </div>
+                    <div class="checkbox-box" onclick="checkSwitch('rememberme')">
+                        <img id="rememberme" src="./img/chk_false_main.png">
+                        <span>Remember me</span>
+                    </div>
+                </div>
+                <div class="login-buttons">
+                    <button class="btn-primary large">Log in</button>
+                    <button class="btn-secondary large">Guest log in</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <!-- Signup-Page -->
+    <div class="signup" id="signup">
+        <img class="signup-logo" src="./img/Logo_big_wh.png">
+        <div class="legalnotice-link-box">
+            <a href="#" class="link-text white">Privacy Policy</a><a href="#" class="link-text white">Legal Notice</a>
+        </div>
+        <div class="signup-formular-box">
+            <div class="signup-back-arrow" onclick="closeIt('signup')">
+                <img src="./img/back_arrow_main.png">
+            </div>
+            <form class="signup-form" action="signup(); return false;" autocomplete="off">
+                <div class="login-title-box">
+                    <span class="login-title">Sign up</span>
+                </div>
+                <div class="signup-fields">
+                    <div class="signup-input-fields">
+                        <div class="input-box">
+                            <input type="text" name="username" id="signup-username" class="input" pattern="[A-Za-zäöüÄÖÜ]+(?: [A-Za-zäöüÄÖÜ\-]+)+" title="First and last name please." placeholder="Name" autocomplete="off" required>
+                            <img src="./img/icon_person.png">
+                        </div>
+                        <div class="input-box">
+                            <input type="email" name="email" id="signup-email" class="input" pattern="[a-zA-Z0-9\.!%_\+\-]{1,64}[@][a-zA-Z0-9\.\-]+\.[a-zA-Z]{2,6}" title="Valid email address please." placeholder="Email" autocomplete="off" required>
+                            <img src="./img/icon_mail.png">
+                        </div>
+                        <div class="input-box">
+                            <input type="password" name="password" id="signup-password" class="input" pattern="(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*_=+-]).{8,25}" title="Password with minimum 8 letters, lowercase and uppercase letters, a numeric value and a special symbol(!@#$%^&*=+-_)" placeholder="Password" autocomplete="off" required>
+                            <img src="./img/icon_lock.png">
+                        </div>
+                        <div class="input-box ">
+                            <input type="password" name="confirmpassword" id="signup-confirm-password" class="input" pattern="(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*_=+-]).{8,25}" title="Confirm the password " placeholder="Confirm Password" autocomplete="off" required>
+                            <img src="./img/icon_lock.png"><span>Ups! your password don´t match</span>
+                        </div>
+                    </div>
+                    <div class="checkbox-box center" onclick="checkSwitch('signupaccept')">
+                        <img id="signupaccept" src="./img/chk_false_main.png">
+                        <span>I accept the </span><a href="#" class="link-text blue">Privacy Policy</a>
+                    </div>
+                </div>
+                <div class="signup-buttons">
+                    <button class="btn-primary">Sign up</button>
+                </div>
+            </form>
+        </div>
+
+    </div>
+</body>
+</html>

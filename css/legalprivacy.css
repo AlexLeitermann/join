@@ -1,0 +1,36 @@
+.policy {
+    position: absolute;
+    top: 168px;
+    left: 232px;
+    margin: 0px 88px 32px;
+    height: calc(100% - 168px);
+}
+
+.policy header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.policy p, .policy h1, .policy h2, .policy h3, .policy ul {
+    margin-bottom: 19px;
+}
+
+.policy h1 {
+    font-size: 61px;
+}
+
+.policy h2 {
+    font-size: 33px;
+}
+
+.policy ul {
+    padding-inline-start: 40px;
+}
+
+
+@media (max-width: 1000px) {
+    .policy {
+        top: 152px;
+    }
+}

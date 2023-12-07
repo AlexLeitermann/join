@@ -1,0 +1,16 @@
+:root {
+    --col-badge: #ffffff;
+    --col-badge-hover: #b5dbff;
+    --col-main: #4589ff;
+    --col-main-hover: #005dff;
+    --col-transparent: #00000000;
+    --col-white: #ffffff;
+    --col-black: #000000;
+    --col-menu: #42526e;
+    --col-menu-active: #d2e3ff;
+    --col-menu-hover: #e3eeff;
+    --col-secondary: #647188;
+    --col-placeholder: #d1d1d1;
+    --col-error: #ff8190;
+}
+

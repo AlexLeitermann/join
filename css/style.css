@@ -1,0 +1,424 @@
+* {
+    position: relative;
+    margin: 0;
+    padding: 0;
+    margin-block-start: 0;
+    margin-block-end: 0;
+    margin-inline-start: 0;
+    margin-inline-end: 0;
+    border: none;
+    outline: none;
+    box-sizing: border-box;
+    text-decoration: none;
+}
+
+:root {
+    color: var(--col-black);
+    font-family: OpenSans;
+    font-size: 16px;
+    font-weight: 400;
+    font-style: normal;
+}
+
+body {
+    z-index: 0;
+    width: 100%;
+    height: 100vh;
+    height: 100dvh;
+    font-family: OpenSans;
+    font-size: 16px;
+    font-weight: 400;
+    font-style: normal;
+    user-select: none;
+}
+
+.insert-top, .insert-bottom {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.standard-text {
+    color: var(--col-black);
+    font-size: 23px;
+    line-height: 120%;
+}
+
+.btn-primary {
+    padding: 10px 16px;
+    color: var(--col-white);
+    background-color: var(--col-main);
+    border-radius: 8px;
+    font-size: 23px;
+    line-height: 120%;
+    cursor: pointer;
+}
+
+.btn-primary:hover {
+    background-color: var(--col-main-hover);
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+}
+
+.btn-secondary {
+    padding: 10px 16px;
+    color: var(--col-secondary);
+    background-color: var(--col-white);
+    border: 1px solid var(--col-secondary);
+    border-radius: 8px;
+    font-size: 23px;
+    line-height: 120%;
+    cursor: pointer;
+}
+
+.btn-secondary:hover {
+    padding: 9px 15px;
+    border: 2px solid var(--col-main);
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+}
+
+.btn-primary.large, .btn-secondary.large {
+    padding: 10px 35px;
+}
+
+.btn-secondary:hover.large {
+    padding: 9px 34px;
+}
+
+.link-text {
+    padding: 8px;
+    color: var(--col-menu);
+    font-size: 16px;
+    line-height: 120%;
+    cursor: pointer;
+}
+
+.link-text:not(.active):hover {
+    color: var(--col-main-hover);
+}
+
+.link-text.active {
+    color: var(--col-white);
+    background-color: var(--col-main);
+    border-radius: 10px;
+    font-size: 16px;
+    line-height: 120%;
+    font-weight: 700;
+}
+
+.link-text.active:hover {
+    background-color: var(--col-main-hover);
+}
+
+.input-box {
+    width: 100%;
+    padding: 12px 21px;
+    border-bottom: 1px solid var(--col-placeholder);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.input-box span {
+    display: none;
+}
+
+.input-box:has(.input:focus) {
+    border-color: var(--col-main);
+}
+
+.input-box.error {
+    border-bottom: 1px solid var(--col-error);
+}
+
+.input-box.error span {
+    position: absolute;
+    bottom: -16px;
+    left: 0;
+    color: var(--col-error);
+    font-family: Inter;
+    font-size: 13px;
+    line-height: 120%;
+    display: block;
+
+}
+
+.input {
+    width: 100%;
+    color: var(--col-black);
+    background-color: var(--col-white);
+    font-size: 19px;
+    line-height: 120%;
+}
+
+.input::placeholder {
+    color: var(--col-placeholder);
+}
+
+.input:focus {
+    border: none;
+    outline: none;
+}
+
+.checkbox-box {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    cursor: pointer;
+}
+
+.return-button {
+    width: 37px;
+    height: 37px;
+    border-radius: 500px;
+    cursor: pointer;
+}
+
+
+
+/* ----- Move ----- */
+.center {
+    display: flex;
+    justify-content: center;
+}
+
+/* ----- Colors ----- */
+.white {
+    color: var(--col-white);
+}
+
+.blue {
+    color: var(--col-main);
+}
+
+
+
+/* ############################################################ */
+/* ----- header ----- */
+.header-main {
+    z-index: 50;
+    position: fixed;
+    inset: 0 0 auto 0;
+    padding: 20px 39px;
+    height: 96px;
+    background-color: var(--col-main);
+    box-shadow: 0 4px 4px 0px rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: all 0.2s ease-in-out;
+}
+
+.header-main-logobox img {
+    width: 46px;
+    transition: all 0.2s ease-in-out;
+}
+
+.header-main-userbox {
+    width: fit-content;
+    height: 100%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    transition: all 0.2s ease-in-out;
+}
+
+.header-main-title {
+    margin-right: 26px;
+    font-size: 19px;
+    line-height: 120%;
+    color: var(--col-white);
+}
+
+.header-main-help {
+    margin-right: 18px;
+}
+
+.header-main-user-mainbox {
+    width: 56px;
+    height: 56px;
+    transition: all 0.2s ease-in-out;
+}
+
+.header-main-user-border {
+    width: 56px;
+    height: 56px;
+    background-color: transparent;
+    border: 3px solid var(--col-white);
+    border-radius: 500px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.2s ease-in-out;
+}
+
+.header-main-user-letters {
+    width: 46px;
+    height: 46px;
+    padding: 10px;
+    background-color: var(--col-white);
+    border-radius: 500px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.2s ease-in-out;
+}
+
+.header-main-user-initials {
+    color: var(--col-main-hover);
+    font-size: 19px;
+    font-weight: 600;
+    line-height: 120%;
+    transition: all 0.2s ease-in-out;
+}
+
+
+
+/* ############################################################ */
+/* ----- footer ----- */
+.footer-main {
+    z-index: 51;
+    position: fixed;
+    inset: 96px auto 0 0;
+    padding: 38px 0px 0px 0px;
+    width: 232px;
+    height: calc(100% - 96px);
+    background-color: var(--col-white);
+    box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.16);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.footer-first, .footer-last {
+    height: 50%;
+}
+
+.menubox {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 15px;
+}
+
+.menu {
+    width: 186px;
+    height: 40px;
+    padding: 8px 30px;
+    border-radius: 8px;
+    display: flex;
+    justify-content: flex-start;
+    gap: 8px;
+    cursor: pointer;
+}
+
+.menu.active {
+    background-color: var(--col-menu-active);
+}
+
+.menu:hover {
+    background-color: var(--col-menu-hover);
+    transition: background-color 0.1s ease-in-out;
+}
+
+.footer-linkbox {
+    height: 100%;
+    padding-bottom: 66px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 16px;
+}
+
+
+
+
+/* ############################################################ */
+/* ############################################################ */
+/* ############################################################ */
+
+
+/* ############################################################ */
+/* ----- header ----- */
+@media (max-width: 1000px) {
+    .header-main {
+        height: 80px;
+        transition: height 0.2s ease-in-out;
+    }    
+
+    .header-main-logobox img {
+        width: 32px;
+        transition: width 0.2s ease-in-out;
+    }
+    
+    .header-main-title {
+        display: none;
+    }
+    
+    .header-main-help {
+        display: none;
+    }
+
+    .header-main-user-mainbox {
+        width: 40px;
+        height: 40px;
+        transition: all 0.2s ease-in-out;
+    }
+
+    .header-main-user-border {
+        border: 2px solid var(--col-white);
+        width: 40px;
+        height: 40px;
+        transition: all 0.2s ease-in-out;
+    }
+    
+    .header-main-user-letters {
+        width: 32px;
+        height: 32px;
+        padding: 10px;
+        background-color: var(--col-white);
+        border-radius: 500px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        transition: all 0.2s ease-in-out;
+    }
+        
+    .header-main-user-initials {
+        color: var(--col-main-hover);
+        font-size: 14px;
+        font-weight: 600;
+        line-height: 120%;
+        transition: all 0.2s ease-in-out;
+    }
+
+
+
+/* ############################################################ */
+/* ----- footer ----- */
+    /* .menubox :nth-child(2) { order: 3; } */
+    .menubox :nth-child(1) { order: 1; }
+    .menubox :nth-child(2) { order: 3; }
+    .menubox :nth-child(3) { order: 2; }
+    .menubox :nth-child(4) { order: 4; }
+
+    .footer-main {
+        top: 80px;
+        height: calc(100% - 80px);
+        transition: all 0.2s ease-in-out;
+    }
+
+    .footer-first {
+        height: 100%;
+    }
+
+    .footer-linkbox {
+        display: none;
+    }
+}
+
+

@@ -1,0 +1,33 @@
+Users:
+-----
+id              - number
+contactid       - number
+email           - text
+password        - text
+
+
+Contacts:
+---------
+id              - number
+userid          - number
+name            - text
+initials        - text
+email           - text
+phone           - text
+badgecolor      - number
+
+
+tasks:
+------
+id              - number
+userid          - number
+title           - text
+description     - text
+date            - date
+priority        - number
+status          - number
+category        - text
+subtasks        - array
+Contacts        - array
+
+

@@ -1,0 +1,228 @@
+/* ----- Start-Animation ----- */
+.slide {
+    z-index: 5;
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--col-main);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    animation: slidecolor 1s ease-in-out 0.2s forwards;
+    transition-delay: 0.2s;
+    transition: background-color 1s;
+}
+
+.slidelogo {
+    position: absolute;
+    top: calc(50% - (324px/2));
+    left: calc(50% - (265px/2));
+    animation: slide 1s ease-in-out 0.2s forwards;
+    transition-delay: 0.2s;
+    transition: all 1s;
+}
+
+@keyframes slide {
+    0% {
+        top: calc(50% - (324px/2));
+        left: calc(50% - (265px/2));
+        width: 265px;
+        filter: invert(0%) sepia(0%) saturate(100%) hue-rotate(180deg) brightness(98%) contrast(105%);
+    }
+    100% {
+        top: 80px;
+        left: 77px;
+        width: 100px;
+        filter: invert(49%) sepia(48%) saturate(3524%) hue-rotate(199deg) brightness(98%) contrast(105%);
+    }
+}
+
+@keyframes slidecolor {
+    0% {
+        background-color: var(--col-main);
+        pointer-events: all;
+        position: absolute;
+    }
+    100% {
+        background-color: var(--col-transparent);
+        pointer-events: none;
+        position: relative;
+    }
+}
+
+/* ----- Login ----- */
+.login {
+    z-index: 0;
+    position: absolute;
+    inset: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.signup-link-box {
+    position: absolute;
+    top: 67px;
+    right: 86px;
+    width: fit-content;
+    display: flex;
+    align-items: center;
+    gap: 35px;
+}
+
+.legalnotice-link-box {
+    position: absolute;
+    bottom: 43px;
+    width: 100%;
+    height: fit-content;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 16px;
+}
+
+.login-formular-box {
+    z-index: 10;
+    padding: 48px 115px;
+    width: 652px;
+    height: 491px;
+    background-color: var(--col-white);
+    box-shadow: 0 0 10px 3px rgba(0, 0, 0, 0.08);
+    border-radius: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.login-form {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 39px;
+}
+
+.login-title-box {
+    height: 74px;
+    display: flex;
+    justify-content: center;
+}
+
+.login-title {
+    font-size: 48px;
+    font-weight: 700;
+    line-height: 120%;
+}
+
+.login-title::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: calc(50% - 75px);
+    height: 3px;
+    width: 150px;
+    background-color: var(--col-main);
+}
+
+.login-fields {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.login-input-fields {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 39px;
+}
+
+.login-buttons {
+    display: flex;
+    justify-content: space-around;
+}
+
+/* ----- Sign up ----- */
+.signup {
+    z-index: 15;
+    position: absolute;
+    inset: 0;
+    height: 100%;
+    width: 100%;
+    background-color: var(--col-main);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transition: opacity 0.2s ease-in-out;
+    pointer-events: none;
+}
+
+.signup.inview {
+    opacity: 1;
+    transition: opacity 0.2s ease-in-out;
+    pointer-events: all;
+}
+
+.signup-logo {
+    position: absolute;
+    top: 80px;
+    left: 77px;
+    width: 100px;
+}
+
+.signup-back-arrow {
+    position: absolute;
+    top: 64px;
+    left: 48px;
+    cursor: pointer;
+}
+
+.signup-back-arrow:hover img {
+    src: url('./img/back_arrow_main_hover.png');
+}
+
+.signup-formular-box {
+    z-index: 10;
+    padding: 48px 88px;
+    width: 598px;
+    height: 607px;
+    background-color: var(--col-white);
+    box-shadow: 0 0 10px 3px rgba(0, 0, 0, 0.08);
+    border-radius: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.signup-form {
+    display: flex;
+    flex-direction: column;
+    gap: 35px;
+}
+
+.signup-fields {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+}
+
+.signup-input-fields {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 24px;
+}
+
+.signup-buttons {
+    display: flex;
+    justify-content: center;
+}
+
+
+
