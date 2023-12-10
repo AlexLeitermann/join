@@ -62,4 +62,25 @@ async function setItem(key, value) {
 }
 
 
+function getLocalData(key) {
+    return JSON.parse(localStorage.getItem(key));
+}
+
+
+function setLocalData(key, value) {
+    localStorage.setItem(key, JSON.stringify(value));
+}
+
+
+function getSessionData(key) {
+    return JSON.parse(sessionStorage.getItem(key));
+}
+
+
+function setSessionData(key, value) {
+    sessionStorage.setItem(key, JSON.stringify(value));
+}
+
+
+
 

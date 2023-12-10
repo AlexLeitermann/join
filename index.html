@@ -69,7 +69,7 @@
             <div class="signup-back-arrow" onclick="closeIt('signup')">
                 <img src="./img/back_arrow_main.png">
             </div>
-            <form class="signup-form" action="signup(); return false;" autocomplete="off">
+            <form class="signup-form" onsubmit="signup(); return false;" autocomplete="off">
                 <div class="login-title-box">
                     <span class="login-title">Sign up</span>
                 </div>
@@ -84,7 +84,7 @@
                             <img src="./img/icon_mail.png">
                         </div>
                         <div class="input-box">
-                            <input type="password" id="signup-password" class="input" pattern=".{8,40}" title="Password with minimum 8 letters, lowercase and uppercase letters, a numeric value and a special symbol(!@#$%^&*=+-_)" placeholder="Password" autocomplete="new-password" required>
+                            <input type="password" id="signup-password" class="input" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[äöüÄÖÜß!@#$%^&*+_\-])[a-zA-Z0-9äöüÄÖÜß!@#$%^&*+_\-]{8,40}$" title="Password with minimum 8 letters, lowercase and uppercase letters, a numeric value and a special symbol (!@#$%^&*+-_)" placeholder="Password" autocomplete="new-password" required>
                             <img id="passwordimg" class="passwordimg" src="./img/icon_lock.png" onclick="togglePasswordView('signup-password')">
                             <div id="passwordInfo" class="d-none">
                                 Your password must meet the following criteria:
@@ -98,7 +98,7 @@
                             </div>
                         </div>
                         <div class="input-box ">
-                            <input type="password" id="signup-confirm-password" class="input" pattern=".{8,40}" title="Confirm the password " placeholder="Confirm Password" autocomplete="new-password" required onblur="validConfirmPassword('signup-password', 'signup-confirm-password')">
+                            <input type="password" id="signup-confirm-password" class="input" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[äöüÄÖÜß!@#$%^&*+_\-])[a-zA-Z0-9äöüÄÖÜß!@#$%^&*+_\-]{8,40}$" title="Confirm the password " placeholder="Confirm Password" autocomplete="new-password" required onblur="validConfirmPassword('signup-password', 'signup-confirm-password')">
                             <img id="confpassimg" class="passwordimg" src="./img/icon_lock.png" onclick="togglePasswordView('signup-confirm-password')"><span>Ups! your password don´t match</span>
                         </div>
                     </div>
@@ -112,7 +112,7 @@
                     </div>
                 </div>
                 <div class="signup-buttons">
-                    <button type="button" id="signupbtn" class="btn-primary" onclick="signup()">Sign up</button>
+                    <button type="submit" id="signupbtn" class="btn-primary">Sign up</button>
                 </div>
             </form>
         </div>

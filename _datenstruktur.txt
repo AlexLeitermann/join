@@ -10,6 +10,7 @@ Contacts:
 ---------
 id              - number
 userid          - number
+assigned        - number
 name            - text
 initials        - text
 email           - text
