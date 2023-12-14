@@ -2,13 +2,84 @@
     position: fixed;
     top: 96px;
     left: 232px;
-    padding: 32px 88px 0px;
+    /* padding: 32px 88px 0px; */
+    width: calc(100% - 232px);
     height: calc(100% - 96px);
-    overflow-y: auto;
+    /* overflow-y: auto; */
     transition: top 0.2s ease-in-out;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.summary-main {
+    max-width: 912px;
+    width: fit-content;
+    height: fit-content;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 72px;
+}
+
+.summary-welcome {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 22px;
+}
+
+.welcome-hello {
+    font-size: 48px;
+}
+
+.welcome-name {
+    font-size: 64px;
+    font-weight: 700;
+    color: var(--col-main);
+}
+
+.overview-main {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 32px;
+}
+
+.taskcard {
+    padding: 40px;
+    min-width: 204px;
+    width: 204px;
+    height: 209px;
+    box-shadow: var(--sha-004015);
+    border-radius: 30px;
+    /* flex: 1 1; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.taskcard.large3 {
+    width: 672px;
+    color: var(--col-white);
+    background-color: var(--col-main);
+    flex-grow: 3;
+    flex-shrink: 0;
+}
+
+.taskcard.alltasks {
+    background-color: var(--col-menu-active);
+}
+
+.taskcard.flat {
+    height: 191px;
 }
 
 
+
+/* ############################################################ */
 @media (max-width: 1000px) {
     .main {
         top: 80px;
