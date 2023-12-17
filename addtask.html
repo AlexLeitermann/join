@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="de">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0"/>
+        <link rel="shortcut icon" href="./img/Logo_med_blue.png" type="image/x-icon"/>
+        <link rel="stylesheet" href="/css/fonts.css" />
+        <link rel="stylesheet" href="/css/color.css" />
+        <link rel="stylesheet" href="/css/style.css" />
+        <link rel="stylesheet" href="/css/addtask.css" />
+        <script src="./js/script.js"></script>
+        <title>JOIN - Add Task</title>
+    </head>
+    <body tabindex="0">
+        <div class="insert-top" w3-include-html="./header.html">
+        </div>
+        <div class="insert-bottom" w3-include-html="./footer.html">
+        </div>
+        <div class="main">
+            <div class="addtask-popupbox">
+                <div class="addtask-titelbox">
+                    <div>
+                        <div class="input-box">
+                            <input type="text" id="task-titel" class="input font-23" placeholder="Enter a title" autocomplete="off" required title="Enter a title.">
+                            <span>This field is required</span>
+                        </div>
+                    </div>
+                    <div class="task-descriptionbox">
+                        <label for="task-description" class="label-bold">
+                            <span>Description </span><span>(optional)</span>
+                        </label>
+                        <textarea name="task-description" id="task-description" class="task-description font-19" placeholder="Enter a Description"></textarea>
+                    </div>
+                    <div class="task-datebox">
+                        <label for="task-date" class="label-bold"><span>Due date</span></label>
+                        <input type="date" name="task-date" id="task-date">
+                    </div>
+                </div>
+                <div class="prioritybox-main">
+                    <label class="label-bold"><span>Priority</span></label>
+                    <div class="prioritybox">
+                        <div class="btn-prio active" id="urgent"><span class="font-19">Urgent</span><img src="./img/Prio_Urgent.png"></div>
+                        <div class="btn-prio" id="medium"><span class="font-19">Medium</span><img src="./img/Prio_Medium.png"></div>
+                        <div class="btn-prio" id="low"><span class="font-19">Low</span><img src="./img/Prio_Low.png"></div>
+                    </div>
+                </div>
+                <div class="assignedtobox">
+                    <label for="task-assignedto" class="label-bold">
+                        <span>Assigned to</span><span> (optional)</span>
+                    </label>
+                    <select name="task-assignedto" id="task-assignedto" class="font-19" multiple size="5">
+                        <option value="1">
+                            <div class="contactlist-itembox active">
+                                <div class="contactlist-item-namebox">
+                                    <div class="contactlist-item-badgebox"><span>AM</span></div>
+                                </div>
+                                <div class="contactlist-item-checkbox">
+                                    <img src="./img/chk_false_main.png">
+                                </div>
+                            </div>
+                        </option>
+                        <option value="Text1">Text 1</option>
+                        <option value="Text2">Text 2</option>
+                        <option value="Text3">Text 3</option>
+                        <option value="Text4">Text 4</option>
+                        <option value="Text5">Text 5</option>
+                        <option value="Text6">Text 6</option>
+                    </select>
+                </div>
+            </div>
+            <div class="addtask-desktopbox">
+                <div class="addtask-buttons">
+                    <button type="button" class="btn-secondary"><span>Clear </span><img src="./img/icon_clear_btn_bk.png"></button>
+                    <button type="button" class="btn-primary"><span>Create Task </span> <img src="./img/icon_chk_btn_wh.png"></button>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

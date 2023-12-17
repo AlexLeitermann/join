@@ -1,3 +1,7 @@
+.menu#board {
+    background-color: var(--col-menu-active);
+}
+
 .main {
     position: fixed;
     top: 96px;

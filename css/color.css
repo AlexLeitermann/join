@@ -12,9 +12,22 @@
     --col-secondary: #647188;
     --col-placeholder: #d1d1d1;
     --col-error: #ff8190;
+    --col-prio-urgent: #ff3d00;
+    --col-prio-medium: #ffa800;
+    --col-prio-low: #7ae229;
+    
 
     --sha-044010: 0 4px 4px 0px rgba(0, 0, 0, 0.1);
     --sha-004015: 0 0 4px 0 rgba(0, 0, 0, 0.15);
     --sha-048020: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+
+    --font-12: 12px;
+    --font-13: 13px;
+    --font-16: 16px;
+    --font-19: 19px;
+    --font-23: 23px;
+    --font-33: 33px;
+    --font-48: 48px;
+    --font-64: 64px;
 }
 

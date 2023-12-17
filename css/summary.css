@@ -1,3 +1,7 @@
+.menu#summary {
+    background-color: var(--col-menu-active);
+}
+
 .main {
     position: fixed;
     top: 96px;
@@ -37,6 +41,7 @@
 
 .welcome-name {
     font-size: 64px;
+    line-height: 120%;
     font-weight: 700;
     color: var(--col-main);
 }
@@ -49,10 +54,11 @@
 }
 
 .taskcard {
+    position: relative;
     padding: 40px;
     min-width: 204px;
     width: 204px;
-    height: 209px;
+    height: 219px;
     box-shadow: var(--sha-004015);
     border-radius: 30px;
     /* flex: 1 1; */
@@ -62,11 +68,44 @@
 }
 
 .taskcard.large3 {
+    padding: 28px 48px;
     width: 672px;
     color: var(--col-white);
     background-color: var(--col-main);
     flex-grow: 3;
     flex-shrink: 0;
+    display: flex;
+    gap: 35px;
+}
+
+.taskcard .center-cross {
+    gap: 20px;
+}
+
+.countbox-main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 13px;
+}
+
+.countbox-main span:last-child {
+    text-align: center;
+}
+
+.separator-v {
+    position: relative;
+    top: 0px;
+    height: 145px;
+    width: 3px;
+    border-radius: 99px;
+    background-color: var(--col-white);
+}
+
+.datebox {
+    display: flex;
+    flex-direction: column;
+    gap: 13px;
 }
 
 .taskcard.alltasks {
@@ -75,6 +114,17 @@
 
 .taskcard.flat {
     height: 191px;
+}
+
+/* ############################################################ */
+.badge-logo {
+    width: 66px;
+    height: 66px;
+    border-radius: 999px;
+}
+
+.large3 .badge-logo {
+    border: 3px solid var(--col-white);
 }
 
 

@@ -20,6 +20,16 @@
     font-style: normal;
 }
 
+.center-main {
+    display: flex;
+    justify-content: center;
+}
+
+.center-cross {
+    display: flex;
+    align-items: center;
+}
+
 body {
     z-index: 0;
     width: 100%;
@@ -43,6 +53,14 @@ body {
     color: var(--col-black);
     font-size: 23px;
     line-height: 120%;
+}
+
+/* ############################################################ */
+/* ----- buttons ----- */
+.btn-primary, .btn-secondary {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .btn-primary {
@@ -85,6 +103,73 @@ body {
     padding: 9px 34px;
 }
 
+/* ############################################################ */
+/* ----- prio-buttons ----- */
+.btn-prio {
+    padding: 18px 10px;
+    width: 136px;
+    height: 51px;
+    color: var(--col-black);
+    background-color: var(--col-white);
+    box-shadow: var(--sha-004015);
+    border-bottom: 2px solid transparent;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+}
+
+.btn-prio.active span {
+    color: var(--col-white);
+}
+
+.btn-prio.active#urgent {
+    background-color: var(--col-prio-urgent);
+}
+
+.btn-prio.active#medium {
+    background-color: var(--col-prio-medium);
+}
+
+.btn-prio.active#low {
+    background-color: var(--col-prio-low);
+}
+
+.btn-prio.active#urgent img {
+    content: url('../img/Prio_Urgent_w.png');
+}
+
+.btn-prio.active#medium img {
+    content: url('../img/Prio_Medium_w.png');
+}
+
+.btn-prio.active#low img {
+    content: url('../img/Prio_Low_w.png');
+}
+
+/* .btn-prio:hover {
+    border-bottom: 2px solid;
+} */
+
+.btn-prio:hover:not(.active)#urgent {
+    /* border-color: var(--col-prio-urgent); */
+    border-bottom: 2px solid var(--col-prio-urgent);
+}
+
+.btn-prio:hover:not(.active)#medium {
+    /* border-color: var(--col-prio-medium); */
+    border-bottom: 2px solid var(--col-prio-medium);
+}
+
+.btn-prio:hover:not(.active)#low {
+    /* border-color: var(--col-prio-low); */
+    border-bottom: 2px solid var(--col-prio-low);
+}
+
+/* ############################################################ */
+/* ----- links ----- */
 .link-text {
     padding: 8px;
     color: var(--col-menu);
@@ -116,6 +201,8 @@ body {
     text-decoration: underline;
 }
 
+/* ############################################################ */
+/* ----- form ----- */
 .input-box {
     width: 100%;
     padding: 12px 21px;
@@ -208,6 +295,9 @@ input[type="text"]:not(:focus) + .passwordimg {
 
 
 
+/* ############################################################ */
+/* ----- global ----- */
+
 /* ----- Move ----- */
 .center {
     display: flex;
@@ -224,6 +314,58 @@ input[type="text"]:not(:focus) + .passwordimg {
     color: var(--col-main);
 }
 
+/* ----- Fonts ----- */
+.font-13 {
+    font-size: var(--font-13);
+    line-height: 120%;
+}
+
+.font-16 {
+    font-size: var(--font-16);
+    line-height: 120%;
+}
+
+.font-19 {
+    font-size: var(--font-19);
+    line-height: 120%;
+}
+
+.font-23 {
+    font-size: var(--font-23);
+    line-height: 120%;
+}
+
+.font-33 {
+    font-size: var(--font-33);
+    line-height: 120%;
+}
+
+.font-48 {
+    font-size: var(--font-48);
+    line-height: 120%;
+}
+
+.font-64 {
+    font-size: var(--font-64);
+    line-height: 120%;
+}
+
+.font-w400 {
+    font-weight: 400;
+}
+
+.font-w700 {
+    font-weight: 700;
+}
+
+.font-w800 {
+    font-weight: 800;
+}
+
+.nowrap {
+    white-space: nowrap;
+    word-wrap: unset;
+}
 
 
 /* ############################################################ */
@@ -242,8 +384,13 @@ input[type="text"]:not(:focus) + .passwordimg {
     transition: all 0.2s ease-in-out;
 }
 
+.header-main-logobox {
+    height: 56px;
+}
+
 .header-main-logobox img {
-    width: 46px;
+    /* width: 46px; */
+    height: 56px;
     transition: all 0.2s ease-in-out;
 }
 
@@ -310,7 +457,7 @@ input[type="text"]:not(:focus) + .passwordimg {
 /* ############################################################ */
 /* ----- footer ----- */
 .footer-main {
-    z-index: 51;
+    z-index: 49;
     position: fixed;
     inset: 96px auto 0 0;
     padding: 38px 0px 0px 0px;
@@ -357,13 +504,20 @@ input[type="text"]:not(:focus) + .passwordimg {
     transition: background-color 0.1s ease-in-out;
 }
 
+.menulink {
+    color: var(--col-black);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
 .footer-linkbox {
     height: 100%;
     padding-bottom: 66px;
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
-    align-items: center;
+    align-items: flex-start;
     gap: 16px;
 }
 

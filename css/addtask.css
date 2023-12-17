@@ -1,13 +1,142 @@
+.menu#addtask {
+    background-color: var(--col-menu-active);
+}
+
 .main {
     position: fixed;
     top: 96px;
     left: 232px;
-    padding: 32px 88px 0px;
+    /* padding: 32px 88px 0px; */
+    width: calc(100% - 232px);
     height: calc(100% - 96px);
     overflow-y: auto;
     transition: top 0.2s ease-in-out;
+    display: flex;
+    justify-content: flex-start;
+    align-items: stretch;
 }
 
+
+/* ############################################################ */
+.addtask-popupbox {
+    padding: 64px 24px 0px 24px;
+    max-width: 488px;
+    width: 100%;
+    height: 100%;
+    box-shadow: var(--sha-004015);
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.addtask-titelbox, .task-descriptionbox, .task-datebox, .prioritybox-main, .assignedtobox {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.addtask-titelbox {
+    gap: 12px;
+}
+
+.label-bold {
+    display: flex;
+    gap: 8px;
+}
+
+.label-bold span:first-child {
+    font-size: 19px;
+    line-height: 120%;
+    font-weight: 700;
+}
+
+.task-description {
+    padding: 18px;
+    width: 100%;
+    min-height: 103px;
+    resize: vertical;
+    background-color: var(--col-white);
+    border: 1px solid var(--col-placeholder);
+    border-radius: 10px;
+}
+
+.task-description::placeholder {
+    color: var(--col-placeholder);
+}
+
+.prioritybox {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 16px;
+}
+
+/* ############################################################ */
+/* ----- addtask - contact - assigned to - listitem ----- */
+.contactlist-itembox {
+    padding: 7px 16px;
+    background-color: var(--col-white);
+    border-radius: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.contactlist-itembox.active {
+    background-color: var(--col-badge-hover);
+}
+
+.contactlist-item-namebox {
+    display: flex;
+    align-items: center;
+    gap: 1px;
+}
+
+.contactlist-item-badgebox {
+    width: 42px;
+    height: 42px;
+    border: 2px solid var(--col-white);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.contactlist-item-badgebox span {
+    width: 100%;
+    height: 100%;
+    color: var(--col-white);
+    font-size: var(--font-12);
+    border-radius: 999px;
+}
+
+
+
+
+/* ############################################################ */
+.addtask-desktopbox {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: flex-end;
+}
+
+.addtask-buttons {
+    margin-right: 32px;
+    margin-bottom: 32px;
+    display: flex;
+    gap: 25px;
+}
+
+.addtask-buttons .btn-primary {
+    gap: 4px;
+}
+
+.addtask-buttons .btn-secondary {
+    gap: 10px;
+}
 
 @media (max-width: 1000px) {
     .main {
