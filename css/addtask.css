@@ -138,6 +138,16 @@
     gap: 10px;
 }
 
+/* ############################################################ */
+.assignedto-itembox {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    cursor: pointer;
+}
+
+
+
 @media (max-width: 1000px) {
     .main {
         top: 80px;
