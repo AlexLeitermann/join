@@ -32,10 +32,14 @@
                             <span>Description </span><span>(optional)</span>
                         </label>
                         <textarea name="task-description" id="task-description" class="task-description font-19" placeholder="Enter a Description"></textarea>
+                        <div class="font-13">&nbsp;</div>
                     </div>
                     <div class="task-datebox">
                         <label for="task-date" class="label-bold"><span>Due date</span></label>
-                        <input type="date" name="task-date" id="task-date">
+                        <div class="input-box">
+                            <input type="date" name="task-date" id="task-date" class="input font-19" placeholder="tt.mm.jjjj">
+                            <img class="input-img" src="./img/icon_datepicker.png">
+                        </div>
                     </div>
                 </div>
                 <div class="prioritybox-main">
@@ -46,15 +50,36 @@
                         <div class="btn-prio" id="low"><span class="font-19">Low</span><img src="./img/Prio_Low.png"></div>
                     </div>
                 </div>
-                <div class="assignedtobox">
+                <div class="assignedto-box">
                     <label for="task-assignedto" class="label-bold">
                         <span>Assigned to</span><span> (optional)</span>
                     </label>
+                    <div class="input-box">
+                        <input type="text" id="assignedto-search" class="input" placeholder="Select contacts to assign">
+                        <img src="./img/drop_down_arrow.png">
+                    </div>
+                    <div class="assignedto-itembox">
+                        <div class="assignedto-item">
+                            <div class="assignedto-namebox">
+                                <div class="assignedto-badgebox">
+                                    <span class="assignedto-badge">MM</span>
+                                </div>
+                                <span id="assignedto-name">Marcel Maurer</span>
+                            </div>
+                            <div class="assignedto-iconbox">
+                                <img class="input-img" src="./img/chk_false_main.png">
+                            </div>
+                        </div>
+                    </div>
+
+
                     <select name="task-assignedto" id="task-assignedto" class="font-19" multiple size="5">
                         <option value="1">
                             <div class="contactlist-itembox active">
                                 <div class="contactlist-item-namebox">
-                                    <div class="contactlist-item-badgebox"><span>AM</span></div>
+                                    <div class="contactlist-item-badgebox">
+                                        <span>AM</span>
+                                    </div>
                                 </div>
                                 <div class="contactlist-item-checkbox">
                                     <img src="./img/chk_false_main.png">

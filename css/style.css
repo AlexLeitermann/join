@@ -55,6 +55,15 @@ body {
     line-height: 120%;
 }
 
+::placeholder {
+    color: var(--col-placeholder);
+    opacity: 1;
+}
+
+:-webkit-input-placeholder, ::-ms-input-placeholder {
+    color: var(--col-placeholder);
+}
+
 /* ############################################################ */
 /* ----- buttons ----- */
 .btn-primary, .btn-secondary {
@@ -218,7 +227,7 @@ body {
     align-items: center;
 }
 
-.input-box span {
+.input-box span, .inputbox-main span {
     display: block;
     opacity: 0;
 }
@@ -271,17 +280,29 @@ input[type="text"]:not(:focus) + .passwordimg {
     line-height: 120%;
 }
 
-.input::placeholder {
-    color: var(--col-placeholder);
-}
-
 .input:focus {
     border: none;
     outline: none;
 }
 
+input[type="date"]::-webkit-inner-spin-button,
+input[type="date"]::-webkit-calendar-picker-indicator {
+    /* display: none; */
+    opacity: 0.0;
+    cursor: pointer;
+}
+
 .input-box:has( .input:focus ) {
     border-bottom: 1px solid var(--col-main);
+}
+
+.input-img {
+    position: absolute;
+    width: 24px;
+    height: 24px;
+    right: 16px;
+    bottom: 12px;
+    pointer-events: none;
 }
 
 .checkbox-box {
