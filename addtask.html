@@ -18,11 +18,12 @@
         </div>
         <div class="main">
             <div class="addtask-popupbox">
+                <!-- Title, description, due date -->
                 <div class="addtask-titelbox">
                     <div>
                         <div class="inputbox-main">
                             <div class="input-box">
-                                <input type="text" id="task-titel" class="input font-32" placeholder="Enter a title" autocomplete="off" required title="Enter a title.">
+                                <input type="text" id="task-title" class="input font-32" placeholder="Enter a title" autocomplete="off" required title="Enter a title.">
                             </div>
                             <span>This field is required</span>
                         </div>
@@ -50,6 +51,7 @@
                         <div class="btn-prio" id="low"><span class="font-19">Low</span><img src="./img/Prio_Low.png"></div>
                     </div>
                 </div>
+                <!-- assigned to -->
                 <div class="assignedto-box">
                     <label for="task-assignedto" class="label-bold">
                         <span>Assigned to</span><span> (optional)</span>
@@ -68,6 +70,53 @@
                             </div>
                             <div class="dropdown-iconbox">
                                 <img id="assignedto-img1" class="dropdown-chk-img" src="./img/chk_false_main.png">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Category -->
+                <div class="category-box">
+                    <label for="task-category" class="label-bold">
+                        <span>Category</span>
+                    </label>
+                    <div class="input-box">
+                        <input type="text" id="category-search" class="input" placeholder="Select contacts to assign" value="Select contacts to assign" readonly>
+                        <img id="category-arrow" class="dropdown-arrow" src="./img/drop_down_arrow.png">
+                    </div>
+                    <div class="category-itembox">
+                        <div class="dropdown-item list">
+                            <div class="dropdown-namebox">
+                                <span id="category-task1" class="flexrowvcenter">Technical Task</span>
+                            </div>
+                        </div>
+                        <div class="dropdown-item list">
+                            <div class="dropdown-namebox">
+                                <span id="category-task2" class="flexrowvcenter">User Story</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Subtask -->
+                <div class="subtask-box">
+                    <label for="task-subtask" class="label-bold">
+                        <span>Subtasks</span><span> (optional)</span>
+                    </label>
+                    <div class="input-box">
+                        <input type="text" id="subtask-search" class="input" placeholder="Add new subtask">
+                        <img id="subtask-arrow" class="subtask-plus" src="./img/icon_subtask_plus_main.png">
+                        <div class="subtask-new-btns">
+                            <img id="subtask-img1" class="dropdown-chk-img" src="./img/icon_clear_btn_main.png">
+                            <div class="v-separator"></div>
+                            <img id="subtask-img1" class="dropdown-chk-img" src="./img/icon_chk_btn_main.png">
+                        </div>
+            </div>
+                    <div class="subtask-itembox">
+                        <div class="dropdown-item active">
+                            <div class="dropdown-namebox">
+                                <span id="subtask-name1" class="flexrowvcenter">Subtask-Text</span>
+                            </div>
+                            <div class="dropdown-iconbox">
+                                <img id="subtask-img1" class="dropdown-chk-img" src="./img/chk_false_main.png">
                             </div>
                         </div>
                     </div>

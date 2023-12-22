@@ -23,10 +23,11 @@
     max-width: 488px;
     width: 100%;
     height: 100%;
-    box-shadow: var(--sha-004015);
+    box-shadow: var(--sha-004015); /* nur um einen Rand zu haben - muss weg!!! */
     display: flex;
     flex-direction: column;
     gap: 24px;
+    overflow-y: auto;
 }
 
 .addtask-titelbox, .task-descriptionbox, .task-datebox, .prioritybox-main, .assignedtobox {
