@@ -6,7 +6,8 @@
     position: fixed;
     top: 96px;
     left: 232px;
-    padding: 32px 88px 0px;
+    /* padding: 32px 88px 0px; */
+    width: calc(100% - 232px);
     height: calc(100% - 96px);
     overflow-y: auto;
     transition: top 0.2s ease-in-out;
@@ -20,3 +21,42 @@
         transition: top 0.2s ease-in-out;
     }
 }
+
+/* ############################################################ */
+/* ----- Contacts ----- */
+.contactlist-main {
+    position: relative;
+    padding: 32px 12px 32px 24px;
+    scrollbar-gutter: stable;
+    max-width: 456px;
+    max-height: 100%;
+    width: 100%;
+    height: 100%;
+    box-shadow: var(--sha-406008);
+    overflow-x: hidden;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: lavender;
+}
+
+.contactlist-titlebox {
+    position: absolute;
+    inset: 0 0 auto 0;
+    padding: 32px 24px 16px 24px;
+    /* max-width: 456px; */
+    width: calc(100% + 12px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: lightcyan;
+}
+
+.contactlist-titlebox .btn-primary {
+    width: 357px;
+    height: 56px;
+    gap: 10px;
+}
+
+

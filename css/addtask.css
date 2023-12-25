@@ -19,7 +19,8 @@
 
 /* ############################################################ */
 .addtask-popupbox {
-    padding: 64px 24px 0px 24px;
+    padding: 64px 12px 0px 24px;
+    scrollbar-gutter: stable;
     max-width: 488px;
     width: 100%;
     height: 100%;
@@ -140,12 +141,27 @@
 }
 
 /* ############################################################ */
-.assignedto-itembox {
+.assignedto-itembox, .category-itembox {
+    display: none;
+}
+
+.input-box.active + .assignedto-itembox,
+.input-box.active ~ .assignedto-itembox, 
+.input-box.active + .category-itembox,
+.input-box.active ~ .category-itembox 
+{
     display: flex;
     flex-direction: column;
     justify-content: center;
     cursor: pointer;
 }
+
+.input-box.active > .dropdown-arrow {
+    content: url('../img/drop_down_arrowup.png');
+}
+
+/* .assignedto-box+.input-box.active */
+
 
 
 

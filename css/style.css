@@ -12,6 +12,28 @@
     text-decoration: none;
 }
 
+/* ===== Scrollbar CSS ===== */
+/* Firefox */
+* {
+    scrollbar-width: 12px;
+    scrollbar-color: #c1c1c1 #f1f1f1;
+}
+
+/* Chrome, Edge, and Safari */
+*::-webkit-scrollbar {
+    width: 12px;
+}
+
+*::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+*::-webkit-scrollbar-thumb {
+    background-color: #c1c1c1;
+    border-radius: 10px;
+    border: 3px solid #f1f1f1;
+}
+
 :root {
     color: var(--col-black);
     font-family: OpenSans;
@@ -71,6 +93,62 @@ body {
 }
 
 /* ############################################################ */
+/* ----- global ----- */
+
+/* ----- Move ----- */
+.center {
+    display: flex;
+    justify-content: center;
+    align-self: center;
+}
+
+/* ----- Colors ----- */
+.white { color: var(--col-white); }
+.blue { color: var(--col-main); }
+
+.bdg-0{ background-color: var(--col-badge-0); }
+.bdg-1{ background-color: var(--col-badge-1); }
+.bdg-2{ background-color: var(--col-badge-2); }
+.bdg-3{ background-color: var(--col-badge-3); }
+.bdg-4{ background-color: var(--col-badge-4); }
+.bdg-5{ background-color: var(--col-badge-5); }
+.bdg-6{ background-color: var(--col-badge-6); }
+.bdg-7{ background-color: var(--col-badge-7); }
+.bdg-8{ background-color: var(--col-badge-8); }
+.bdg-9{ background-color: var(--col-badge-9); }
+.bdg-10{ background-color: var(--col-badge-10); }
+.bdg-11{ background-color: var(--col-badge-11); }
+.bdg-12{ background-color: var(--col-badge-12); }
+.bdg-13{ background-color: var(--col-badge-13); }
+.bdg-14{ background-color: var(--col-badge-14); }
+
+/* ----- Fonts ----- */
+.font-12 { font-size: var(--font-12); }
+.font-13 { font-size: var(--font-13); }
+.font-16 { font-size: var(--font-16); }
+.font-19 { font-size: var(--font-19); }
+.font-23 { font-size: var(--font-23); }
+.font-32 { font-size: var(--font-32); }
+.font-33 { font-size: var(--font-33); }
+.font-48 { font-size: var(--font-48); }
+.font-64 { font-size: var(--font-64); }
+
+.font-12, .font-13, .font-16, .font-19, .font-23,
+.font-32, .font-33, .font-48, .font-64 {
+    line-height: 120%;
+}
+
+.font-w400 { font-weight: 400; }
+.font-w700 { font-weight: 700; }
+.font-w800 { font-weight: 800; }
+
+.nowrap {
+    white-space: nowrap;
+    word-wrap: unset;
+}
+
+
+/* ############################################################ */
 /* ----- buttons ----- */
 .btn-primary, .btn-secondary {
     display: flex;
@@ -116,6 +194,13 @@ body {
 
 .btn-secondary:hover.large {
     padding: 9px 34px;
+}
+
+.return-button {
+    width: 37px;
+    height: 37px;
+    border-radius: 500px;
+    cursor: pointer;
 }
 
 /* ############################################################ */
@@ -164,22 +249,15 @@ body {
     content: url('../img/Prio_Low_w.png');
 }
 
-/* .btn-prio:hover {
-    border-bottom: 2px solid;
-} */
-
 .btn-prio:hover:not(.active)#urgent {
-    /* border-color: var(--col-prio-urgent); */
     border-bottom: 2px solid var(--col-prio-urgent);
 }
 
 .btn-prio:hover:not(.active)#medium {
-    /* border-color: var(--col-prio-medium); */
     border-bottom: 2px solid var(--col-prio-medium);
 }
 
 .btn-prio:hover:not(.active)#low {
-    /* border-color: var(--col-prio-low); */
     border-bottom: 2px solid var(--col-prio-low);
 }
 
@@ -320,21 +398,16 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     cursor: pointer;
 }
 
-.return-button {
-    width: 37px;
-    height: 37px;
-    border-radius: 500px;
-    cursor: pointer;
-}
-
 /* ############################################################ */
+/* ----- Dropdown's ----- */
+/* ----- contact ----- */
 .dropdown-item {
-    /* padding: 7px 0px 7px 16px; */
     padding: 7px 16px;
     background-color: var(--col-white);
     border-radius: 10px;
     display: flex;
     justify-content: space-between;
+    transition: background-color 0.1s ease;
 }
 
 .dropdown-item.list {
@@ -343,14 +416,17 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 
 .dropdown-item:hover {
     background-color: var(--col-menu-active);
+    transition: background-color 0.1s ease;
 }
 
 .dropdown-item.active {
     background-color: var(--col-main);
+    transition: background-color 0.1s ease;
 }
 
 .dropdown-item.active:hover {
     background-color: var(--col-main-hover);
+    transition: background-color 0.1s ease;
 }
 
 .dropdown-item.active .flexrowvcenter {
@@ -395,15 +471,36 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     align-items: center;
 }
 
-.dropdown-chk-img {
+.dropdown-chk-img, .dropdown-item-option {
     width: 24px;
     height: 24px;
 }
 
-.subtask-new-btns {
+/* ------------------------------------------------------------ */
+.input-box:has( .input:focus ) .subtask-plus {
+    display: none;
+}
+
+.input-box:has( .input:focus ) .subtask-new-btns {
+    display: flex;
+}
+
+.subtask-new-btns, .subtask-option-btns {
     display: flex;
     align-items: center;
     gap: 4px;
+}
+
+.subtask-option-btns {
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.1s ease-out;
+}
+
+.dropdown-item:hover .subtask-option-btns {
+    opacity: 1;
+    pointer-events: all;
+    transition: opacity 0.1s ease;
 }
 
 .v-separator.new {
@@ -420,94 +517,14 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     border: 1px solid var(--col-separator-edit);
 }
 
-.dropdown-arrow, .subtask-plus {
+.dropdown-arrow, .subtask-plus,
+.dropdown-item-img, .dropdown-item-option {
     cursor: pointer;
 }
 
 
 
 
-
-
-/* ############################################################ */
-/* ----- global ----- */
-
-/* ----- Move ----- */
-.center {
-    display: flex;
-    justify-content: center;
-    align-self: center;
-}
-
-/* ----- Colors ----- */
-.white { color: var(--col-white); }
-.blue { color: var(--col-main); }
-
-.bdg-0{ background-color: var(--col-badge-0); }
-.bdg-1{ background-color: var(--col-badge-1); }
-.bdg-2{ background-color: var(--col-badge-2); }
-.bdg-3{ background-color: var(--col-badge-3); }
-.bdg-4{ background-color: var(--col-badge-4); }
-.bdg-5{ background-color: var(--col-badge-5); }
-.bdg-6{ background-color: var(--col-badge-6); }
-.bdg-7{ background-color: var(--col-badge-7); }
-.bdg-8{ background-color: var(--col-badge-8); }
-.bdg-9{ background-color: var(--col-badge-9); }
-.bdg-10{ background-color: var(--col-badge-10); }
-.bdg-11{ background-color: var(--col-badge-11); }
-.bdg-12{ background-color: var(--col-badge-12); }
-.bdg-13{ background-color: var(--col-badge-13); }
-.bdg-14{ background-color: var(--col-badge-14); }
-
-/* ----- Fonts ----- */
-.font-13 {
-    font-size: var(--font-13);
-    line-height: 120%;
-}
-
-.font-16 {
-    font-size: var(--font-16);
-    line-height: 120%;
-}
-
-.font-19 {
-    font-size: var(--font-19);
-    line-height: 120%;
-}
-
-.font-23 {
-    font-size: var(--font-23);
-    line-height: 120%;
-}
-
-.font-32 {
-    font-size: var(--font-32);
-    line-height: 120%;
-}
-
-.font-33 {
-    font-size: var(--font-33);
-    line-height: 120%;
-}
-
-.font-48 {
-    font-size: var(--font-48);
-    line-height: 120%;
-}
-
-.font-64 {
-    font-size: var(--font-64);
-    line-height: 120%;
-}
-
-.font-w400 { font-weight: 400; }
-.font-w700 { font-weight: 700; }
-.font-w800 { font-weight: 800; }
-
-.nowrap {
-    white-space: nowrap;
-    word-wrap: unset;
-}
 
 
 /* ############################################################ */

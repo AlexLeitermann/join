@@ -9,6 +9,7 @@
         <link rel="stylesheet" href="/css/style.css" />
         <link rel="stylesheet" href="/css/addtask.css" />
         <script src="./js/script.js"></script>
+        <script src="./js/addtask.js"></script>
         <title>JOIN - Add Task</title>
     </head>
     <body tabindex="0">
@@ -56,9 +57,9 @@
                     <label for="task-assignedto" class="label-bold">
                         <span>Assigned to</span><span> (optional)</span>
                     </label>
-                    <div class="input-box">
+                    <div id="input-box-assignedto" class="input-box active">
                         <input type="text" id="assignedto-search" class="input" placeholder="Select contacts to assign">
-                        <img id="assignedto-arrow" class="dropdown-arrow" src="./img/drop_down_arrow.png">
+                        <img id="assignedto-arrow" class="dropdown-arrow" src="./img/drop_down_arrow.png" onclick="toggleActive('input-box-assignedto')">
                     </div>
                     <div class="assignedto-itembox">
                         <div class="dropdown-item active">
@@ -79,9 +80,9 @@
                     <label for="task-category" class="label-bold">
                         <span>Category</span>
                     </label>
-                    <div class="input-box">
+                    <div id="input-box-category" class="input-box">
                         <input type="text" id="category-search" class="input" placeholder="Select contacts to assign" value="Select contacts to assign" readonly>
-                        <img id="category-arrow" class="dropdown-arrow" src="./img/drop_down_arrow.png">
+                        <img id="category-arrow" class="dropdown-arrow" src="./img/drop_down_arrow.png" onclick="toggleActive('input-box-category')">
                     </div>
                     <div class="category-itembox">
                         <div class="dropdown-item list">
@@ -104,19 +105,33 @@
                     <div class="input-box">
                         <input type="text" id="subtask-search" class="input" placeholder="Add new subtask">
                         <img id="subtask-arrow" class="subtask-plus" src="./img/icon_subtask_plus_main.png">
-                        <div class="subtask-new-btns">
-                            <img id="subtask-img1" class="dropdown-chk-img" src="./img/icon_clear_btn_main.png">
-                            <div class="v-separator"></div>
-                            <img id="subtask-img1" class="dropdown-chk-img" src="./img/icon_chk_btn_main.png">
+                        <div class="subtask-new-btns d-none">
+                            <img id="subtask-img1" class="dropdown-item-img" src="./img/icon_clear_btn_main.png">
+                            <div class="v-separator new"></div>
+                            <img id="subtask-img2" class="dropdown-item-img" src="./img/icon_chk_btn_main.png">
                         </div>
-            </div>
+                    </div>
                     <div class="subtask-itembox">
-                        <div class="dropdown-item active">
+                        <div class="dropdown-item">
                             <div class="dropdown-namebox">
-                                <span id="subtask-name1" class="flexrowvcenter">Subtask-Text</span>
+                                <span id="subtask-name1" class="flexrowvcenter"><li>Subtask-Text</li></span>
                             </div>
-                            <div class="dropdown-iconbox">
-                                <img id="subtask-img1" class="dropdown-chk-img" src="./img/chk_false_main.png">
+                            <div class="subtask-option-btns">
+                                <img id="subtaskitem-img1" class="dropdown-item-option" src="./img/icon_edit_main.png">
+                                <div class="v-separator new"></div>
+                                <img id="subtaskitem-img2" class="dropdown-item-option" src="./img/icon_delete_main.png">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="subtask-itembox">
+                        <div class="dropdown-item">
+                            <div class="dropdown-namebox">
+                                <span id="subtask-name1" class="flexrowvcenter"><li>Subtask-Text</li></span>
+                            </div>
+                            <div class="subtask-option-btns">
+                                <img id="subtaskitem-img1" class="dropdown-item-option" src="./img/icon_edit_main.png">
+                                <div class="v-separator new"></div>
+                                <img id="subtaskitem-img2" class="dropdown-item-option" src="./img/icon_delete_main.png">
                             </div>
                         </div>
                     </div>
