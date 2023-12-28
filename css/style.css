@@ -105,6 +105,7 @@ body {
 /* ----- Colors ----- */
 .white { color: var(--col-white); }
 .blue { color: var(--col-main); }
+.blue2 { color: var(--col-main-hover); }
 
 .bdg-0{ background-color: var(--col-badge-0); }
 .bdg-1{ background-color: var(--col-badge-1); }
@@ -130,15 +131,17 @@ body {
 .font-23 { font-size: var(--font-23); }
 .font-32 { font-size: var(--font-32); }
 .font-33 { font-size: var(--font-33); }
+.font-47 { font-size: var(--font-47); }
 .font-48 { font-size: var(--font-48); }
 .font-64 { font-size: var(--font-64); }
 
 .font-12, .font-13, .font-16, .font-19, .font-23,
-.font-32, .font-33, .font-48, .font-64 {
+.font-32, .font-33, .font-47, .font-48, .font-64 {
     line-height: 120%;
 }
 
 .font-w400 { font-weight: 400; }
+.font-w500 { font-weight: 500; }
 .font-w700 { font-weight: 700; }
 .font-w800 { font-weight: 800; }
 
@@ -521,6 +524,25 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 .dropdown-item-img, .dropdown-item-option {
     cursor: pointer;
 }
+
+/* ############################################################ */
+.badge-120 {
+    width: 120px;
+    height: 120px;
+    border-radius: 999px;
+    border: 3px solid var(--col-white);
+    box-shadow: var(--sha-004015);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.badge-120-circle {
+    font-family: Inter;
+    font-size: var(--font-47);
+    font-weight: 500;
+}
+
 
 
 

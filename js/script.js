@@ -1,3 +1,4 @@
+const active = 'active';
 document.addEventListener('DOMContentLoaded', async function () {
     await init();
 });

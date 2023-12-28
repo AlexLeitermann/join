@@ -8,6 +8,7 @@
         <link rel="stylesheet" href="/css/color.css" />
         <link rel="stylesheet" href="/css/style.css" />
         <link rel="stylesheet" href="/css/contacts.css" />
+        <script src="./js/contact.js"></script>
         <script src="./js/script.js"></script>
         <title>JOIN - Contacts</title>
     </head>
@@ -23,7 +24,68 @@
                 </div>
                 <div class="contactlist-listbox">
                     <!--  -->
+                    <div class="contactlist-letterbox">
+                        <span class="contactlist-letter">N</span>
+                    </div>
+                    <div class="contactlist-hr"></div>
+                    <!--  -->
+                    <div id="contactlist-itembox-1" class="contactlist-itembox active" onclick="openContact(2)">
+                        <div>
+                            <div class="contactlist-itembox-badge">
+                                <div class="contactlist-itembox-badge-circle bdg-2">
+                                    <span class="contactlist-itembox-badge-text">NB</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="contactlist-itembox-namebox">
+                            <span class="contactlist-itembox-name">Natascha Birka</span>
+                            <span class="contactlist-itembox-mail">natascha.birka@me.com</span>
+                        </div>
+                    </div>
+                    <!--  -->
+                    <div id="contactlist-itembox-2" class="contactlist-itembox" onclick="openContact(-1)">
+                        <div>
+                            <div class="contactlist-itembox-badge">
+                                <div class="contactlist-itembox-badge-circle bdg-0">
+                                    <span class="contactlist-itembox-badge-text">NN</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="contactlist-itembox-namebox">
+                            <span class="contactlist-itembox-name">Noch nichtda (You)</span>
+                            <span class="contactlist-itembox-mail">nochnichtda@freenet.de</span>
+                        </div>
+                    </div>
+                    <!--  -->
                     <div class="contactlist-endbox"></div>
+                </div>
+            </div>
+            <!--  -->
+            <div class="contactview-main active" id="contactview-main">
+                <div class="contactview-top">
+                    <div class="badge-120 bdg-2">
+                        <span class="badge-120-circle">AM</span>
+                    </div>
+                    <div class="contactview-namebox">
+                        <span class="contactview-name">Anton Mayer</span>
+                        <div class="contactview-options">
+                            <button id="contact-edit" class="contact-options"><img src="./img/icon_edit_main.png"><span>Edit</span></button>
+                            <button id="contact-delete" class="contact-options"><img src="./img/icon_delete_main.png"><span>Delete</span></button>
+                        </div>
+                    </div>
+                </div>
+                <div class="contactview-title">
+                    <span>Contact Information</span>
+                </div>
+                <div class="contactview-data">
+                    <div class="contactview-data-set">
+                        <span class="font-w700">Email</span>
+                        <span class="blue2">antom@gmail.com</span>
+                    </div>
+                    <div class="contactview-data-set">
+                        <span class="font-w700">Phone</span>
+                        <span>+49 1111 111 11 1</span>
+                    </div>
                 </div>
             </div>
         </div>
