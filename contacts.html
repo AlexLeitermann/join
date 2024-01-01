@@ -7,6 +7,8 @@
         <link rel="stylesheet" href="/css/fonts.css" />
         <link rel="stylesheet" href="/css/color.css" />
         <link rel="stylesheet" href="/css/style.css" />
+        <link rel="stylesheet" href="/css/addcontact.css" />
+        <link rel="stylesheet" href="/css/editcontact.css" />
         <link rel="stylesheet" href="/css/contacts.css" />
         <script src="./js/contact.js"></script>
         <script src="./js/script.js"></script>
@@ -17,19 +19,21 @@
         </div>
         <div class="insert-bottom" w3-include-html="./footer.html">
         </div>
+        <!--  -->
         <div class="main">
+            <!--  -->
             <div class="contactlist-main">
                 <div class="contactlist-titlebox">
-                    <button type="button" class="btn-primary"><span>Add new contact </span> <img src="./img/icon_add_contact_wh.png"></button>
+                    <button type="button" class="btn-primary" id="addcontact-btn" onclick="newContactView(event)"><span>Add new contact </span> <img src="./img/icon_add_contact_wh.png"></button>
                 </div>
-                <div class="contactlist-listbox">
+                <div class="contactlist-listbox" onclick="openContact(-1, event)">
                     <!--  -->
                     <div class="contactlist-letterbox">
                         <span class="contactlist-letter">N</span>
                     </div>
                     <div class="contactlist-hr"></div>
                     <!--  -->
-                    <div id="contactlist-itembox-1" class="contactlist-itembox active" onclick="openContact(2)">
+                    <div id="contactlist-itembox-1" class="contactlist-itembox" onclick="openContact(1, event)">
                         <div>
                             <div class="contactlist-itembox-badge">
                                 <div class="contactlist-itembox-badge-circle bdg-2">
@@ -43,7 +47,7 @@
                         </div>
                     </div>
                     <!--  -->
-                    <div id="contactlist-itembox-2" class="contactlist-itembox" onclick="openContact(-1)">
+                    <div id="contactlist-itembox-2" class="contactlist-itembox" onclick="openContact(2, event)">
                         <div>
                             <div class="contactlist-itembox-badge">
                                 <div class="contactlist-itembox-badge-circle bdg-0">
@@ -61,7 +65,7 @@
                 </div>
             </div>
             <!--  -->
-            <div class="contactview-main active" id="contactview-main">
+            <div class="contactview-main" id="contactview-main">
                 <div class="contactview-top">
                     <div class="badge-120 bdg-2">
                         <span class="badge-120-circle">AM</span>
@@ -69,7 +73,7 @@
                     <div class="contactview-namebox">
                         <span class="contactview-name">Anton Mayer</span>
                         <div class="contactview-options">
-                            <button id="contact-edit" class="contact-options"><img src="./img/icon_edit_main.png"><span>Edit</span></button>
+                            <button id="contact-edit" class="contact-options" onclick="editContactView(event)"><img src="./img/icon_edit_main.png"><span>Edit</span></button>
                             <button id="contact-delete" class="contact-options"><img src="./img/icon_delete_main.png"><span>Delete</span></button>
                         </div>
                     </div>
@@ -88,6 +92,98 @@
                     </div>
                 </div>
             </div>
+        </div>
+        <!--  -->
+        <div id="addcontact-main" class="addcontact-main" onclick="newContactView(event)">
+            <div class="addcontact-mainbox">
+                <!--  -->
+                <div class="addcontact-head">
+                    <div class="addcontact-head-content">
+                        <div class="addcontact-head-logobox">
+                            <img src="./img/Logo_big_wh.png" class="addcontact-head-logo">
+                        </div>
+                        <span class="addcontact-head-title">Add contact</span>
+                    </div>
+                </div>
+                <img src="./img/icon_close_wh.png" id="addcontact-head-close" class="addcontact-head-close" onclick="newContactView(event)">
+                <!--  -->
+                <div class="addcontact-content-main">
+                    <div class="addcontact-contentbox">
+                        <div class="addcontact-content-badgebox">
+                            <div class="badge-120">AM</div>
+                        </div>
+                        <!--  -->
+                        <div class="addcontact-content-inputbox">
+                            <div class="input-box">
+                                <input type="text" id="addcontact-name" class="input" pattern="[A-Za-zäöüÄÖÜ]+(?: [A-Za-zäöüÄÖÜ\-]+)+" title="First and last name please." placeholder="Name" autocomplete="name" required>
+                                <img src="./img/icon_person.png">
+                            </div>
+                            <div class="input-box">
+                                <input type="email" id="addcontact-email" class="input" pattern="[a-zA-Z0-9\.!%_\+\-]{1,64}[@][a-zA-Z0-9\.\-]+\.[a-zA-Z]{2,6}" title="Valid email address please." placeholder="Email" autocomplete="email" required>
+                                <img src="./img/icon_mail.png">
+                            </div>
+                            <div class="input-box">
+                                <input type="text" id="addcontact-phone" class="input" pattern="(\+|00)( \d){5,20}" title="International-Format: + or 00 and at least 5 digits after the + or 00, no spaces." placeholder="Phone" autocomplete="Phone" required>
+                                <img src="./img/icon_phone.png">
+                            </div>
+                        </div>
+                        <!--  -->
+                        <div class="addcontact-content-actionbox">
+                            <button class="btn-secondary" id="addcontact-cancel-btn" onclick="newContactView(event)"><span>Cancel</span><img src="./img/icon_clear_btn_bk.png"></button>
+                            <button class="btn-primary"><span>Create contact</span><img src="./img/icon_chk_btn_wh.png"></button>
+                        </div>
+                    </div>
+                </div>
+                <!--  -->
+            </div>
+        </div>
+        <!--  -->
+        <div id="editcontact-main" class="editcontact-main" onclick="editContactView(event)">
+            <div class="editcontact-mainbox">
+                <!--  -->
+                <div class="editcontact-head">
+                    <div class="addcontact-head-content">
+                        <div class="addcontact-head-logobox">
+                            <img src="./img/Logo_big_wh.png" class="addcontact-head-logo">
+                        </div>
+                        <span class="addcontact-head-title">Edit contact</span>
+                    </div>
+                </div>
+                <img src="./img/icon_close_wh.png" id="editcontact-head-close" class="addcontact-head-close" onclick="editContactView(event)">
+                <!--  -->
+                <div class="addcontact-content-main">
+                    <div class="addcontact-contentbox">
+                        <div class="addcontact-content-badgebox">
+                            <div class="badge-120">AM</div>
+                        </div>
+                        <!--  -->
+                        <div class="addcontact-content-inputbox">
+                            <div class="input-box">
+                                <input type="text" id="addcontact-name" class="input" pattern="[A-Za-zäöüÄÖÜ]+(?: [A-Za-zäöüÄÖÜ\-]+)+" title="First and last name please." placeholder="Name" autocomplete="name" required>
+                                <img src="./img/icon_person.png">
+                            </div>
+                            <div class="input-box">
+                                <input type="email" id="addcontact-email" class="input" pattern="[a-zA-Z0-9\.!%_\+\-]{1,64}[@][a-zA-Z0-9\.\-]+\.[a-zA-Z]{2,6}" title="Valid email address please." placeholder="Email" autocomplete="email" required>
+                                <img src="./img/icon_mail.png">
+                            </div>
+                            <div class="input-box">
+                                <input type="text" id="addcontact-phone" class="input" pattern="(\+|00)( \d){5,20}" title="International-Format: + or 00 and at least 5 digits after the + or 00, no spaces." placeholder="Phone" autocomplete="Phone" required>
+                                <img src="./img/icon_phone.png">
+                            </div>
+                        </div>
+                        <!--  -->
+                        <div class="addcontact-content-actionbox">
+                            <button class="btn-secondary" id="editcontact-delete-btn" onclick=""><span>Delete</span></button>
+                            <button class="btn-primary"><span>Save</span><img src="./img/icon_chk_btn_wh.png"></button>
+                        </div>
+                    </div>
+                </div>
+                <!--  -->
+            </div>
+        </div>
+        <!-- Popup - success -->
+        <div id="contactsuccess" class="contactsuccess">
+            <span>Contact successfully created</span>
         </div>
     </body>
 </html>

@@ -155,7 +155,7 @@ body {
 /* ----- buttons ----- */
 .btn-primary, .btn-secondary {
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
 }
 
@@ -164,9 +164,11 @@ body {
     color: var(--col-white);
     background-color: var(--col-main);
     border-radius: 8px;
+    font-family: OpenSans;
     font-size: 23px;
     line-height: 120%;
     cursor: pointer;
+    gap: 4px;
 }
 
 .btn-primary:hover {
@@ -180,6 +182,7 @@ body {
     background-color: var(--col-white);
     border: 1px solid var(--col-secondary);
     border-radius: 8px;
+    font-family: OpenSans;
     font-size: 23px;
     line-height: 120%;
     cursor: pointer;

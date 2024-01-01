@@ -13,6 +13,8 @@
     --col-placeholder: #d1d1d1;
     --col-separator-new: #d1d1d1;
     --col-separator-edit: #a8a8a8;
+    --col-notaskbg: #e7e7e7;
+    --col-subtaskbg: #f4f4f4;
     --col-error: #ff8190;
     --col-prio-urgent: #ff3d00;
     --col-prio-medium: #ffa800;

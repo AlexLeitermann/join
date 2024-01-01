@@ -1,8 +1,41 @@
-function openContact(id = -1) {
-    if(id != -1) {
-        document.getElementById('contactview-main').classList.add('active');
-    } else {
-        document.getElementById('contactview-main').classList.remove('active');
+let activeContactItem = null;
+
+
+
+function openContact(id = -1, event) {
+    if(event.target === event.currentTarget || event.currentTarget.id.search('contactlist-itembox-') != -1) {
+        openContactClearActive();
+        if(id != -1) {
+            document.getElementById('contactview-main').classList.add(active);
+            document.getElementById(`contactlist-itembox-${id}`).classList.add(active);
+        }
+    }
+}
+
+
+function openContactClearActive() {
+    document.getElementById('contactview-main').classList.remove(active);
+    let elem = document.getElementsByClassName('contactlist-itembox');
+    Array.from(elem).forEach(element => {
+        element.classList.remove(active);
+    });
+}
+
+
+function newContactView(event) {
+    const elem = event.target;
+    const elemList = event.currentTarget;
+    if(elem === elemList || elemList.id === "addcontact-head-close" || elemList.id === "addcontact-btn" || elemList.id === "addcontact-cancel-btn" ) {
+        document.getElementById('addcontact-main').classList.toggle(active);
+    }
+}
+
+
+function editContactView(event) {
+    const elem = event.target;
+    const elemList = event.currentTarget;
+    if(elem === elemList || elemList.id === "editcontact-head-close" || elemList.id === "contact-edit" ) {
+        document.getElementById('editcontact-main').classList.toggle(active);
     }
 }
 

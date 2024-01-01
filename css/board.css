@@ -6,7 +6,8 @@
     position: fixed;
     top: 96px;
     left: 232px;
-    padding: 32px 88px 0px;
+    right: 0;
+    padding: 72px 64px 48px;
     height: calc(100% - 96px);
     overflow-y: auto;
     transition: top 0.2s ease-in-out;
@@ -20,3 +21,230 @@
         transition: top 0.2s ease-in-out;
     }
 }
+
+/* ############################################################ */
+/* ############################################################ */
+/* ############################################################ */
+/* ----- Search-field ----- */
+.board-headbox {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 35px;
+}
+
+.searchbox {
+    padding: 8px 16px;
+    border-radius: 10px;
+    border: 1px solid var(--col-separator-edit);
+    display: flex;
+    flex-wrap: nowrap;
+}
+
+.search-line {
+    width: 232px;
+    font-size: var(--font-16);
+}
+
+.search-iconbox {
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 16px;
+}
+
+.v-separator {
+    width: 1px;
+    height: 31px;
+    border: 1px solid var(--col-separator-new);
+}
+
+.search-icon {
+    width: 32px;
+    height: 32px;
+    cursor: pointer;
+}
+
+/* ############################################################ */
+/* ############################################################ */
+/* ############################################################ */
+/* ----- Tasks-field ----- */
+.task-board-main {
+    margin-top: 48px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 24px;
+}
+
+.task-col-main {
+    min-width: 252px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.task-col-head {
+    height: 32px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.task-col-head span {
+    color: var(--col-menu);
+    font-size: var(--font-23);
+    font-weight: 700;
+}
+
+.task-col-head:hover img {
+    content: url('../img/icon_addtask_hover.png');
+    cursor: pointer;
+}
+
+.notaskinfo {
+    padding: 8px;
+    height: 48px;
+    color: var(--col-separator-edit);
+    background-color: var(--col-notaskbg);
+    border: 1px dashed var(--col-separator-edit);
+    border-radius: 10px;
+    box-shadow: var(--sha-004015);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    align-self: stretch;
+}
+
+.task-col-list:has(.task-itembox) .notaskinfo {
+    display: none;
+}
+
+/* ############################################################ */
+/* ############################################################ */
+/* ############################################################ */
+/* ----- Tasks-Card ----- */
+.task-itembox {
+    width: 252px;
+    padding: 16px;
+    background-color: var(--col-white);
+    border-radius: 24px;
+    box-shadow: 0 0 10px 3px rgba(0,0,0,0.08);
+    cursor: pointer;
+}
+
+.task-content {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+/* ------------------------------------------------------------ */
+/* ----- Category ----- */
+.category {
+    width: fit-content;
+    padding: 4px 16px;
+    color: var(--col-white);
+    background-color: var(--col-badge-8);
+    border-radius: 8px;
+}
+
+/* ------------------------------------------------------------ */
+/* ----- Text-Box ----- */
+.text-box {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.task-title {
+    color: var(--col-main);
+    font-size: var(--font-16);
+    font-weight: 700;
+}
+
+.task-description {
+    color: var(--col-separator-edit);
+    font-size: var(--font-16);
+}
+
+/* ------------------------------------------------------------ */
+/* ----- Subtasks ----- */
+.subtask-box {
+    position: relative;
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.subtask-barbox {
+    z-index: 0;
+    position: relative;
+    width: 128px;
+    height: 8px;
+    background-color: var(--col-subtaskbg);
+    border-radius: 5px;
+}
+
+.subtask-box span {
+    display: flex;
+    font-size: var(--font-13);
+}
+
+.subtask-bar {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: calc(2/3*128px);
+    height: 8px;
+    background-color: var(--col-main);
+    border-radius: 5px;
+}
+
+/* ------------------------------------------------------------ */
+/* ----- Assigned to and Prio ----- */
+.assignedto-prio {
+    display: flex;
+    justify-content: space-between;
+}
+
+.assignedto-box {
+    position: relative;
+    width: min-content;
+    display: flex;
+    flex-direction: row;
+}
+
+.task-badge {
+    position: relative;
+    width: 32px;
+    height: 32px;
+    color: var(--col-white);
+    border: 1px solid var(--col-white);
+    border-radius: 16px;
+    font-size: var(--font-12);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.task-badge.bdg-2,
+.task-badge.bdg-7,
+.task-badge.bdg-11 {
+    color: var(--col-black);
+}
+
+.task-badge + .task-badge {
+    margin-left: -8px;
+}
+
+/* ############################################################ */
+/* ############################################################ */
+/* ############################################################ */
+/* ----- Tasks-Card ----- */
+
+
+
+
+
+

@@ -17,7 +17,93 @@
         <div class="insert-bottom" w3-include-html="./footer.html">
         </div>
         <div class="main">
-
+            <!--  -->
+            <div class="board-headbox">
+                <div class="searchbox" id="searchbox">
+                    <input type="text" class="search-line" id="search-task" placeholder="Find Task">
+                    <div class="search-iconbox">
+                        <div class="v-separator"></div>
+                        <img src="./img/icon_search.png" class="search-icon">
+                    </div>
+                </div>
+                <button class="btn-primary"><span>Add task</span><img src="./img/icon_desk_board_plus_wh.png"></button>
+            </div>
+            <!--  -->
+            <div class="task-board-main">
+                <div class="task-col-main" id="task-col-todo">
+                    <div class="task-col-head">
+                        <span>To do</span>
+                        <img src="./img/icon_addtask_main.png">
+                    </div>
+                    <div class="task-col-list">
+                        <div class="notaskinfo">No tasks To do</div>
+                    </div>
+                </div>
+                <!--  -->
+                <div class="task-col-main" id="task-col-progress">
+                    <div class="task-col-head">
+                        <span>In progress</span>
+                        <img src="./img/icon_addtask_main.png">
+                    </div>
+                    <div class="task-col-list">
+                        <div class="notaskinfo">No tasks In progress</div>
+                        <div class="task-col-listbox">
+                            <!-- Task-Card -->
+                            <div class="task-itembox" id="task-itembox-1">
+                                <div class="task-content">
+                                    <span class="category">User Story</span>
+                                    <div class="text-box">
+                                        <span class="task-title">Title</span>
+                                        <span class="task-description">Description</span>
+                                    </div>
+                                    <div class="subtask-box">
+                                        <div class="subtask-barbox">
+                                            <div class="subtask-bar"></div>
+                                        </div>
+                                        <span>0/0 Subtasks</span>
+                                    </div>
+                                    <div class="assignedto-prio">
+                                        <div class="assignedto-box">
+                                            <div class="task-badge bdg-8">AM</div>
+                                            <div class="task-badge bdg-0">MB</div>
+                                            <div class="task-badge bdg-12">NN</div>
+                                            <div class="task-badge bdg-5">TZ</div>
+                                        </div>
+                                        <div class="task-prio">
+                                            <img src="./img/Prio_Medium.png">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- /Task-Card -->
+                        </div>
+                    </div>
+                </div>
+                <!--  -->
+                <div class="task-col-main" id="task-col-feedback">
+                    <div class="task-col-head">
+                        <span>Await feedback</span>
+                        <img src="./img/icon_addtask_main.png">
+                    </div>
+                    <div class="task-col-list">
+                        <div class="notaskinfo">No tasks Await feedback</div>
+                    </div>
+                </div>
+                <!--  -->
+                <div class="task-col-main" id="task-col-done">
+                    <div class="task-col-head">
+                        <span>Done</span>
+                    </div>
+                    <div class="task-col-list">
+                        <div class="notaskinfo">No tasks Done</div>
+                    </div>
+                </div>
+                <!--  -->
+            </div>
+        </div>
+        <!--  -->
+        <div class="addtask-popup">
+            
         </div>
     </body>
 </html>

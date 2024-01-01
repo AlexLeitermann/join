@@ -34,3 +34,9 @@ async function includeHTML() {
 function browserBack() {
     history.back();
 }
+
+
+function stopPropagation(event) {
+    event.stopPropagation();
+}
+
