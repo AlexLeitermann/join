@@ -1,59 +1,62 @@
-.menu#addtask {
-    background-color: var(--col-menu-active);
-}
-
-@media (max-width: 1000px) {
-    .menu#addtask {
-        background-color: transparent;
-    }
-
-    .menu#addtask img {
-        content: url('../img/icon_menu_addtask_active.png');
-    }
-
-    .menu#addtask span {
-        color: var(--col-main);
-    }
-}
-
-.main {
-    position: fixed;
-    top: 96px;
-    left: 232px;
-    /* padding: 32px 88px 0px; */
-    width: calc(100% - 232px);
-    height: calc(100% - 96px);
-    overflow-y: auto;
+/* ############################################################ */
+.edittask-popup-mainbox {
+    position: relative;
+    /* right: -530px; */
+    top: calc(100% + 10px);
+    width: 518px;
+    height: 90%;
+    background-color: var(--col-white);
+    border-radius: 30px;
     transition: top 0.2s ease-in-out;
+}
+
+.edittask-popup.active .edittask-popup-mainbox {
+    top: 5%;
+    transition: top 0.2s 0.2s ease-in-out;
+}
+
+.edittask-popup-title {
+    position: relative;
+    padding: 0 40px;
+    min-height: 156px;
+    height: 156px;
+    background-color: var(--col-white);
+    border-radius: 30px 30px 0 0;
     display: flex;
     justify-content: flex-start;
-    align-items: stretch;
+    align-items: center;
 }
 
+.edittask-popup-title span {
+    font-size: var(--font-48);
+    font-weight: 700;
+}
 
-/* ############################################################ */
-.addtask-popupbox {
-    padding: 64px 12px 0px 24px;
+.edittask-popupbox {
+    padding: 0px 12px 0px 24px;
     scrollbar-gutter: stable;
-    max-width: 488px;
-    width: 100%;
-    height: 100%;
-    box-shadow: var(--sha-004015); /* nur um einen Rand zu haben - muss weg!!! */
+    height: calc(100% - 244px);
+    background-color: var(--col-white);
     display: flex;
     flex-direction: column;
     gap: 24px;
     overflow-y: auto;
 }
 
-.addtask-titelbox, .task-descriptionbox, .task-datebox, .prioritybox-main, .assignedtobox {
+.edittask-titelbox, .task-descriptionbox, .task-datebox, .prioritybox-main, .assignedto-box {
     width: 100%;
     display: flex;
     flex-direction: column;
     gap: 8px;
 }
 
-.addtask-titelbox {
+.edittask-titelbox {
     gap: 12px;
+}
+
+#task-title, #task-title::placeholder {
+    font-family: OpenSans;
+    font-size: var(--font-32);
 }
 
 .label-bold {
@@ -130,27 +133,32 @@
 
 
 /* ############################################################ */
-.addtask-desktopbox {
-    height: 100%;
+.edittask-desktopbox {
+    /* height: 100%; */
     width: 100%;
+    border-radius: 0 0 30px 30px;
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
     align-items: flex-end;
 }
 
-.addtask-buttons {
-    margin-right: 32px;
-    margin-bottom: 32px;
+.edittask-buttons {
+    /* margin-right: 32px; */
+    /* margin-bottom: 32px; */
+    width: 518px;
+    padding: 16px 40px 24px 40px;
+    background-color: var(--col-white);
+    border-radius: 0 0 30px 30px;
     display: flex;
-    gap: 25px;
+    justify-content: flex-end;
 }
 
-.addtask-buttons .btn-primary {
+.edittask-buttons .btn-primary {
     gap: 4px;
 }
 
-.addtask-buttons .btn-secondary {
+.edittask-buttons .btn-secondary {
     gap: 10px;
 }
 
@@ -179,10 +187,3 @@
 
 
 
-@media (max-width: 1000px) {
-    .main {
-        top: 80px;
-        height: calc(100% - 80px);
-        transition: top 0.2s ease-in-out;
-    }
-}

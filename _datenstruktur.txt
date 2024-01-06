@@ -3,7 +3,7 @@ Users:
 id              - number
 contactid       - number
 email           - text
-password        - text
+password        - text (hash)
 
 
 Contacts:
@@ -22,12 +22,12 @@ tasks:
 ------
 id              - number
 userid          - number
-title           - text
+title           - text (r)
 description     - text
-date            - date
-priority        - number
+date            - date (r)
+priority        - number (r.m)
 status          - number
-category        - text
+category        - text (r)
 subtasks        - array
 Contacts        - array
 

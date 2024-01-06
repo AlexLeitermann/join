@@ -7,8 +7,12 @@
         <link rel="stylesheet" href="/css/fonts.css" />
         <link rel="stylesheet" href="/css/color.css" />
         <link rel="stylesheet" href="/css/style.css" />
+        <link rel="stylesheet" href="/css/addtaskpopup.css" />
+        <link rel="stylesheet" href="/css/edittaskpopup.css" />
+        <link rel="stylesheet" href="/css/viewtaskpopup.css" />
         <link rel="stylesheet" href="/css/board.css" />
         <script src="./js/script.js"></script>
+        <script src="./js/board.js"></script>
         <title>JOIN - Board</title>
     </head>
     <body tabindex="0">
@@ -16,6 +20,7 @@
         </div>
         <div class="insert-bottom" w3-include-html="./footer.html">
         </div>
+        <!-- MAIN -->
         <div class="main">
             <!--  -->
             <div class="board-headbox">
@@ -26,35 +31,37 @@
                         <img src="./img/icon_search.png" class="search-icon">
                     </div>
                 </div>
-                <button class="btn-primary"><span>Add task</span><img src="./img/icon_desk_board_plus_wh.png"></button>
+                <button class="btn-primary task-popupadd" taskpopup onclick="newTaskpopupView(event)"><span>Add task</span><img src="./img/icon_desk_board_plus_wh.png"></button>
+                <button class="btn-primary task-popupedit" taskpopup onclick="editTaskpopupView(event)"><span>Edit task</span><img src="./img/icon_desk_board_plus_wh.png"></button>
             </div>
             <!--  -->
             <div class="task-board-main">
+                <!-- To do -->
                 <div class="task-col-main" id="task-col-todo">
                     <div class="task-col-head">
                         <span>To do</span>
-                        <img src="./img/icon_addtask_main.png">
+                        <img src="./img/icon_addtask_main.png" class="task-popupadd" onclick="newTaskpopupView(event)">
                     </div>
                     <div class="task-col-list">
                         <div class="notaskinfo">No tasks To do</div>
                     </div>
                 </div>
-                <!--  -->
+                <!-- In Progress -->
                 <div class="task-col-main" id="task-col-progress">
                     <div class="task-col-head">
                         <span>In progress</span>
-                        <img src="./img/icon_addtask_main.png">
+                        <img src="./img/icon_addtask_main.png" class="task-popupadd" onclick="newTaskpopupView(event)">
                     </div>
                     <div class="task-col-list">
                         <div class="notaskinfo">No tasks In progress</div>
                         <div class="task-col-listbox">
                             <!-- Task-Card -->
-                            <div class="task-itembox" id="task-itembox-1">
+                            <div class="task-itembox task-popupview" id="task-itembox-1" onclick="viewTaskpopupView(event)">
                                 <div class="task-content">
                                     <span class="category">User Story</span>
                                     <div class="text-box">
                                         <span class="task-title">Title</span>
-                                        <span class="task-description">Description</span>
+                                        <span class="task-description-preview">Description</span>
                                     </div>
                                     <div class="subtask-box">
                                         <div class="subtask-barbox">
@@ -62,12 +69,12 @@
                                         </div>
                                         <span>0/0 Subtasks</span>
                                     </div>
-                                    <div class="assignedto-prio">
-                                        <div class="assignedto-box">
-                                            <div class="task-badge bdg-8">AM</div>
-                                            <div class="task-badge bdg-0">MB</div>
-                                            <div class="task-badge bdg-12">NN</div>
-                                            <div class="task-badge bdg-5">TZ</div>
+                                    <div class="subtask-assignedto-prio">
+                                        <div class="subtask-assignedto-box">
+                                            <div class="subtask-task-badge bdg-8">AM</div>
+                                            <div class="subtask-task-badge bdg-0">MB</div>
+                                            <div class="subtask-task-badge bdg-12">NN</div>
+                                            <div class="subtask-task-badge bdg-5">TZ</div>
                                         </div>
                                         <div class="task-prio">
                                             <img src="./img/Prio_Medium.png">
@@ -79,17 +86,17 @@
                         </div>
                     </div>
                 </div>
-                <!--  -->
+                <!-- Await feedback -->
                 <div class="task-col-main" id="task-col-feedback">
                     <div class="task-col-head">
                         <span>Await feedback</span>
-                        <img src="./img/icon_addtask_main.png">
+                        <img src="./img/icon_addtask_main.png" class="task-popupadd" onclick="newTaskpopupView(event)">
                     </div>
                     <div class="task-col-list">
                         <div class="notaskinfo">No tasks Await feedback</div>
                     </div>
                 </div>
-                <!--  -->
+                <!-- Done -->
                 <div class="task-col-main" id="task-col-done">
                     <div class="task-col-head">
                         <span>Done</span>
@@ -101,9 +108,353 @@
                 <!--  -->
             </div>
         </div>
-        <!--  -->
-        <div class="addtask-popup">
-            
+        <!-- Add Task -->
+        <div class="addtask-popup" id="addtask-popup" onclick="newTaskpopupView(event)">
+            <div class="addtask-popup-mainbox">
+                <div class="addtask-popup-title">
+                    <span>Add Task</span>
+                </div>
+                <div class="addtask-popupbox">
+                    <!-- Title, description, due date -->
+                    <div class="addtask-titelbox">
+                        <div>
+                            <div class="inputbox-main">
+                                <div class="input-box">
+                                    <input type="text" id="task-title" class="input font-32" placeholder="Enter a title" autocomplete="off" required title="Enter a title.">
+                                </div>
+                                <span>This field is required</span>
+                            </div>
+                        </div>
+                        <div class="task-descriptionbox">
+                            <label for="task-description" class="label-bold">
+                                <span>Description </span><span>(optional)</span>
+                            </label>
+                            <textarea name="task-description" id="task-description" class="task-description font-19" placeholder="Enter a Description"></textarea>
+                            <div class="font-13">&nbsp;</div>
+                        </div>
+                        <div class="task-datebox">
+                            <label for="task-date" class="label-bold"><span>Due date</span></label>
+                            <div class="input-box">
+                                <input type="date" name="task-date" id="task-date" class="input font-19" placeholder="tt.mm.jjjj">
+                                <img class="input-img" src="./img/icon_datepicker.png">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="prioritybox-main">
+                        <label class="label-bold"><span>Priority</span></label>
+                        <div class="prioritybox">
+                            <div class="btn-prio" id="urgent"><span class="font-19">Urgent</span><img src="./img/Prio_Urgent.png"></div>
+                            <div class="btn-prio active" id="medium"><span class="font-19">Medium</span><img src="./img/Prio_Medium.png"></div>
+                            <div class="btn-prio" id="low"><span class="font-19">Low</span><img src="./img/Prio_Low.png"></div>
+                        </div>
+                    </div>
+                    <!-- assigned to -->
+                    <div class="assignedto-box">
+                        <label for="task-assignedto" class="label-bold">
+                            <span>Assigned to</span><span> (optional)</span>
+                        </label>
+                        <div id="input-box-assignedto" class="input-box active">
+                            <input type="text" id="assignedto-search" class="input" placeholder="Select contacts to assign">
+                            <img id="assignedto-arrow" class="dropdown-arrow" src="./img/drop_down_arrow.png" onclick="toggleActive('input-box-assignedto')">
+                        </div>
+                        <div class="assignedto-itembox">
+                            <div class="dropdown-item active">
+                                <div class="dropdown-namebox">
+                                    <div class="dropdown-badgebox">
+                                        <span id="assignedto-badge1" class="dropdown-badge bdg-1">MM</span>
+                                    </div>
+                                    <span id="assignedto-name1" class="flexrowvcenter">Marcel Maurer</span>
+                                </div>
+                                <div class="dropdown-iconbox">
+                                    <img id="assignedto-img1" class="dropdown-chk-img" src="./img/chk_false_main.png">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Category -->
+                    <div class="category-box">
+                        <label for="task-category" class="label-bold">
+                            <span>Category</span>
+                        </label>
+                        <div id="input-box-category" class="input-box">
+                            <input type="text" id="category-search" class="input" placeholder="Select contacts to assign" value="Select contacts to assign" readonly>
+                            <img id="category-arrow" class="dropdown-arrow" src="./img/drop_down_arrow.png" onclick="toggleActive('input-box-category')">
+                        </div>
+                        <div class="category-itembox">
+                            <div class="dropdown-item list">
+                                <div class="dropdown-namebox">
+                                    <span id="category-task1" class="flexrowvcenter">Technical Task</span>
+                                </div>
+                            </div>
+                            <div class="dropdown-item list">
+                                <div class="dropdown-namebox">
+                                    <span id="category-task2" class="flexrowvcenter">User Story</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Subtask -->
+                    <div class="subtask-box">
+                        <label for="task-subtask" class="label-bold">
+                            <span>Subtasks</span><span> (optional)</span>
+                        </label>
+                        <div class="input-box">
+                            <input type="text" id="subtask-search" class="input" placeholder="Add new subtask">
+                            <img id="subtask-arrow" class="subtask-plus" src="./img/icon_subtask_plus_main.png">
+                            <div class="subtask-new-btns d-none">
+                                <img id="subtask-img1" class="dropdown-item-img" src="./img/icon_clear_btn_main.png">
+                                <div class="v-separator new"></div>
+                                <img id="subtask-img2" class="dropdown-item-img" src="./img/icon_chk_btn_main.png">
+                            </div>
+                        </div>
+                        <div class="subtask-itembox">
+                            <div class="dropdown-item">
+                                <div class="dropdown-namebox">
+                                    <span id="subtask-name1" class="flexrowvcenter"><li>Subtask-Text</li></span>
+                                </div>
+                                <div class="subtask-option-btns">
+                                    <img id="subtaskitem-img1" class="dropdown-item-option" src="./img/icon_edit_main.png">
+                                    <div class="v-separator new"></div>
+                                    <img id="subtaskitem-img2" class="dropdown-item-option" src="./img/icon_delete_main.png">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="subtask-itembox">
+                            <div class="dropdown-item">
+                                <div class="dropdown-namebox">
+                                    <span id="subtask-name1" class="flexrowvcenter"><li>Subtask-Text</li></span>
+                                </div>
+                                <div class="subtask-option-btns">
+                                    <img id="subtaskitem-img1" class="dropdown-item-option" src="./img/icon_edit_main.png">
+                                    <div class="v-separator new"></div>
+                                    <img id="subtaskitem-img2" class="dropdown-item-option" src="./img/icon_delete_main.png">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="addtask-desktopbox">
+                    <div class="addtask-buttons">
+                        <button type="button" class="btn-primary" id="addtask-btn" onclick="newTaskpopupView(event)"><span>Create Task </span> <img src="./img/icon_chk_btn_wh.png"></button>
+                    </div>
+                </div>
+                <img src="./img/icon_close_main.png" id="addtask-head-close" class="addtask-head-close" onclick="newTaskpopupView(event)">
+            </div>
         </div>
+        <!-- Edit Task -->
+        <div class="edittask-popup" id="edittask-popup" onclick="editTaskpopupView(event)">
+            <div class="edittask-popup-mainbox">
+                <div class="edittask-popup-title">
+                    <span>Edit Task</span>
+                </div>
+                <div class="edittask-popupbox">
+                    <!-- Title, description, due date -->
+                    <div class="edittask-titelbox">
+                        <div>
+                            <div class="inputbox-main">
+                                <div class="input-box">
+                                    <input type="text" id="task-title" class="input font-32" placeholder="Enter a title" autocomplete="off" required title="Enter a title.">
+                                </div>
+                                <span>This field is required</span>
+                            </div>
+                        </div>
+                        <div class="task-descriptionbox">
+                            <label for="task-description" class="label-bold">
+                                <span>Description </span><span>(optional)</span>
+                            </label>
+                            <textarea name="task-description" id="task-description" class="task-description font-19" placeholder="Enter a Description"></textarea>
+                            <div class="font-13">&nbsp;</div>
+                        </div>
+                        <div class="task-datebox">
+                            <label for="task-date" class="label-bold"><span>Due date</span></label>
+                            <div class="input-box">
+                                <input type="date" name="task-date" id="task-date" class="input font-19" placeholder="tt.mm.jjjj">
+                                <img class="input-img" src="./img/icon_datepicker.png">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="prioritybox-main">
+                        <label class="label-bold"><span>Priority</span></label>
+                        <div class="prioritybox">
+                            <div class="btn-prio" id="urgent"><span class="font-19">Urgent</span><img src="./img/Prio_Urgent.png"></div>
+                            <div class="btn-prio active" id="medium"><span class="font-19">Medium</span><img src="./img/Prio_Medium.png"></div>
+                            <div class="btn-prio" id="low"><span class="font-19">Low</span><img src="./img/Prio_Low.png"></div>
+                        </div>
+                    </div>
+                    <!-- assigned to -->
+                    <div class="assignedto-box">
+                        <label for="task-assignedto" class="label-bold">
+                            <span>Assigned to</span><span> (optional)</span>
+                        </label>
+                        <div id="input-box-assignedto" class="input-box active">
+                            <input type="text" id="assignedto-search" class="input" placeholder="Select contacts to assign">
+                            <img id="assignedto-arrow" class="dropdown-arrow" src="./img/drop_down_arrow.png" onclick="toggleActive('input-box-assignedto')">
+                        </div>
+                        <div class="assignedto-itembox">
+                            <div class="dropdown-item active">
+                                <div class="dropdown-namebox">
+                                    <div class="dropdown-badgebox">
+                                        <span id="assignedto-badge1" class="dropdown-badge bdg-1">MM</span>
+                                    </div>
+                                    <span id="assignedto-name1" class="flexrowvcenter">Marcel Maurer</span>
+                                </div>
+                                <div class="dropdown-iconbox">
+                                    <img id="assignedto-img1" class="dropdown-chk-img" src="./img/chk_false_main.png">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Subtask -->
+                    <div class="subtask-box">
+                        <label for="task-subtask" class="label-bold">
+                            <span>Subtasks</span><span> (optional)</span>
+                        </label>
+                        <div class="input-box">
+                            <input type="text" id="subtask-search" class="input" placeholder="Add new subtask">
+                            <img id="subtask-arrow" class="subtask-plus" src="./img/icon_subtask_plus_main.png">
+                            <div class="subtask-new-btns d-none">
+                                <img id="subtask-img1" class="dropdown-item-img" src="./img/icon_clear_btn_main.png">
+                                <div class="v-separator new"></div>
+                                <img id="subtask-img2" class="dropdown-item-img" src="./img/icon_chk_btn_main.png">
+                            </div>
+                        </div>
+                        <div class="subtask-itembox">
+                            <div class="dropdown-item">
+                                <div class="dropdown-namebox">
+                                    <span id="subtask-name1" class="flexrowvcenter"><li>Subtask-Text</li></span>
+                                </div>
+                                <div class="subtask-option-btns">
+                                    <img id="subtaskitem-img1" class="dropdown-item-option" src="./img/icon_edit_main.png">
+                                    <div class="v-separator new"></div>
+                                    <img id="subtaskitem-img2" class="dropdown-item-option" src="./img/icon_delete_main.png">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="subtask-itembox">
+                            <div class="dropdown-item">
+                                <div class="dropdown-namebox">
+                                    <span id="subtask-name1" class="flexrowvcenter"><li>Subtask-Text</li></span>
+                                </div>
+                                <div class="subtask-option-btns">
+                                    <img id="subtaskitem-img1" class="dropdown-item-option" src="./img/icon_edit_main.png">
+                                    <div class="v-separator new"></div>
+                                    <img id="subtaskitem-img2" class="dropdown-item-option" src="./img/icon_delete_main.png">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="edittask-desktopbox">
+                    <div class="edittask-buttons">
+                        <button type="button" class="btn-primary" id="edittask-btn" onclick="editTaskpopupView(event)"><span>Create Task </span> <img src="./img/icon_chk_btn_wh.png"></button>
+                    </div>
+                </div>
+                <img src="./img/icon_close_main.png" id="edittask-head-close" class="edittask-head-close" onclick="editTaskpopupView(event)">
+            </div>
+        </div>
+        <!-- View Task -->
+        <div class="viewtask-popup" id="viewtask-popup" onclick="viewTaskpopupView(event)">
+            <div class="viewtask-popup-mainbox">
+                <!-- <div class="viewtask-popup-title"></div> -->
+                <div class="viewtask-popupbox">
+                    <!-- Category -->
+                    <div class="category-box">
+                        <span id="viewtask-category" class="category large">User Story</span>
+                    </div>
+                    <!-- Title, description, due date, prio -->
+                    <div class="viewtask-titelbox">
+                        <div class="viewtask-title">
+                            Kochwelt Page & Recipe Recommender
+                        </div>
+                        <div class="task-descriptionbox">
+                            <div id="viewtask-description" class="viewtask-description">
+                                Build start page with recipe recommendation.
+                            </div>
+                        </div>
+                        <div class="viewtask-datebox">
+                            <span class="viewlabel-bold">Due date:</span>
+                            <span class="viewtask-date" id="viewtask-date">06.01.2024</span>
+                        </div>
+                    </div>
+                    <div class="viewtask-priobox-main">
+                        <span class="viewlabel-bold">Priority:</span>
+                        <div id="viewtask-set-prio" class="viewtask-priobox medium">
+                            <span class="viewtask-prio urgent font-19">Urgent<img src="./img/Prio_Urgent.png"></span>
+                            <span class="viewtask-prio medium font-19">Medium<img src="./img/Prio_Medium.png"></span>
+                            <span class="viewtask-prio low font-19">Low<img src="./img/Prio_Low.png"></span>
+                        </div>
+                    </div>
+                    <!-- assigned to -->
+                    <div class="viewtask-assignedto-box">
+                        <span class="viewlabel-bold">Assigned to:</span>
+                        <div class="viewtask-assignedto-itembox">
+                            <!--  -->
+                            <div class="viewtask-dropdown-item">
+                                <div class="viewtask-dropdown-namebox">
+                                    <div class="viewtask-dropdown-badgebox">
+                                        <span id="assignedto-badge1" class="viewtask-dropdown-badge bdg-8">AM</span>
+                                    </div>
+                                    <span id="assignedto-name1" class="flexrowvcenter">Anton Mayer</span>
+                                </div>
+                            </div>
+                            <!--  -->
+                            <div class="viewtask-dropdown-item">
+                                <div class="viewtask-dropdown-namebox">
+                                    <div class="viewtask-dropdown-badgebox">
+                                        <span id="assignedto-badge2" class="viewtask-dropdown-badge bdg-3">MM</span>
+                                    </div>
+                                    <span id="assignedto-name1" class="flexrowvcenter">Marcel Maurer</span>
+                                </div>
+                            </div>
+                            <!--  -->
+                            <div class="viewtask-dropdown-item">
+                                <div class="viewtask-dropdown-namebox">
+                                    <div class="viewtask-dropdown-badgebox">
+                                        <span id="assignedto-badge3" class="viewtask-dropdown-badge bdg-13">AZ</span>
+                                    </div>
+                                    <span id="assignedto-name1" class="flexrowvcenter">Andreas Zanderer</span>
+                                </div>
+                            </div>
+                            <!--  -->
+                        </div>
+                    </div>
+                    <!-- Subtask -->
+                    <div class="viewtask-subtask-box">
+                        <span class="viewlabel-bold">Subtasks:</span>
+                        <!--  -->
+                        <div class="viewtask-subtask-itembox" id="subtask-name1">
+                            <div class="dropdown-item">
+                                <div class="dropdown-namebox">
+                                    <div class="viewtask-subtask-chk" class="flexrowvcenter"><img src="./img/chk_false_main.png"><span>Implement Recipe Recommendation</span></div>
+                                </div>
+                            </div>
+                        </div>
+                        <!--  -->
+                        <div class="viewtask-subtask-itembox" id="subtask-name2">
+                            <div class="dropdown-item">
+                                <div class="dropdown-namebox">
+                                    <div class="viewtask-subtask-chk" class="flexrowvcenter"><img src="./img/chk_false_main.png"><span>Start Page Layout</span></div>
+                                </div>
+                            </div>
+                        </div>
+                        <!--  -->
+                    </div>
+                    <!--  -->
+                    <div class="viewtask-option-btns">
+                        <div class="viewtask-item-option min-w-52"><img class="viewtask-option-del" src="./img/icon_delete_main.png"><span>Delete</span></div>
+                        <div class="v-separator view"></div>
+                        <div class="viewtask-item-option min-w-32"><img class="viewtask-option-edit" src="./img/icon_edit_main.png"><span>Edit</span></div>
+                    </div>
+                    <!--  -->
+                </div>
+                <!-- <div class="viewtask-desktopbox">
+                    <div class="viewtask-buttons">
+                        <button type="button" class="btn-primary" id="viewtask-btn" onclick="viewTaskpopupView(event)"><span>OK </span> <img src="./img/icon_chk_btn_wh.png"></button>
+                    </div>
+                </div> -->
+                <img src="./img/icon_close_main.png" id="viewtask-head-close" class="viewtask-head-close" onclick="viewTaskpopupView(event)">
+            </div>
+        </div>
+        <!--  -->
     </body>
 </html>

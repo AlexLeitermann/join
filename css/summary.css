@@ -2,14 +2,26 @@
     background-color: var(--col-menu-active);
 }
 
+@media (max-width: 1000px) {
+    .menu#summary {
+        background-color: transparent;
+    }
+
+    .menu#summary img {
+        content: url('../img/icon_menu_summary_active.png');
+    }
+
+    .menu#summary span {
+        color: var(--col-main);
+    }
+}
+
 .main {
     position: fixed;
     top: 96px;
     left: 232px;
-    /* padding: 32px 88px 0px; */
     width: calc(100% - 232px);
     height: calc(100% - 96px);
-    /* overflow-y: auto; */
     transition: top 0.2s ease-in-out;
     display: flex;
     flex-direction: column;

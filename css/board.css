@@ -2,6 +2,20 @@
     background-color: var(--col-menu-active);
 }
 
+@media (max-width: 1000px) {
+    .menu#board {
+        background-color: transparent;
+    }
+
+    .menu#board img {
+        content: url('../img/icon_menu_board_active.png');
+    }
+
+    .menu#board span {
+        color: var(--col-main);
+    }
+}
+
 .main {
     position: fixed;
     top: 96px;
@@ -142,10 +156,18 @@
 /* ----- Category ----- */
 .category {
     width: fit-content;
+    height: fit-content;
     padding: 4px 16px;
     color: var(--col-white);
     background-color: var(--col-badge-8);
     border-radius: 8px;
+}
+
+.category.large {
+    display: block;
+    padding: 4px 24px;
+    font-size: 23px;
+    line-height: 120%;
 }
 
 /* ------------------------------------------------------------ */
@@ -162,7 +184,7 @@
     font-weight: 700;
 }
 
-.task-description {
+.task-description-preview {
     color: var(--col-separator-edit);
     font-size: var(--font-16);
 }
@@ -172,9 +194,10 @@
 .subtask-box {
     position: relative;
     display: flex;
+    flex-direction: column;
     flex-wrap: nowrap;
     justify-content: space-between;
-    align-items: center;
+    /* align-items: center; */
 }
 
 .subtask-barbox {
@@ -203,19 +226,20 @@
 
 /* ------------------------------------------------------------ */
 /* ----- Assigned to and Prio ----- */
-.assignedto-prio {
+.subtask-assignedto-prio {
     display: flex;
     justify-content: space-between;
 }
 
-.assignedto-box {
+.subtask-assignedto-box {
     position: relative;
-    width: min-content;
+    width: 100%;
     display: flex;
     flex-direction: row;
+    gap: 0;
 }
 
-.task-badge {
+.subtask-task-badge {
     position: relative;
     width: 32px;
     height: 32px;
@@ -228,22 +252,131 @@
     align-items: center;
 }
 
-.task-badge.bdg-2,
-.task-badge.bdg-7,
-.task-badge.bdg-11 {
+.subtask-task-badge.bdg-2,
+.subtask-task-badge.bdg-7,
+.subtask-task-badge.bdg-11 {
     color: var(--col-black);
 }
 
-.task-badge + .task-badge {
+.subtask-task-badge + .subtask-task-badge {
     margin-left: -8px;
 }
 
 /* ############################################################ */
 /* ############################################################ */
 /* ############################################################ */
-/* ----- Tasks-Card ----- */
+/* ----- AddTask-popup ----- */
+.addtask-popup {
+    z-index: 50;
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #00000046;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.addtask-popup:not(.active) {
+    opacity: 0;
+    transition: opacity 0.2s 0.2s ease-in-out;
+    pointer-events: none;
+}
+
+.addtask-popup.active {
+    opacity: 1;
+    transition: opacity 0.2s ease-in-out;
+    pointer-events: all;
+}
+
+.addtask-head-close {
+    position: absolute;
+    top: 24px;
+    right: 24px;
+    cursor: pointer;
+}
+
+.addtask-head-close:hover {
+    content: url('../img/icon_close_hover.png');
+}
+
+/* ############################################################ */
+/* ############################################################ */
+/* ############################################################ */
+/* ----- EditTask-popup ----- */
+.edittask-popup {
+    z-index: 50;
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #00000046;
+    display: flex;
+    justify-content: center;
+}
+
+.edittask-popup:not(.active) {
+    opacity: 0;
+    transition: opacity 0.2s 0.2s ease-in-out;
+    pointer-events: none;
+}
+
+.edittask-popup.active {
+    opacity: 1;
+    transition: opacity 0.2s ease-in-out;
+    pointer-events: all;
+}
+
+.edittask-head-close {
+    position: absolute;
+    top: 24px;
+    right: 24px;
+    cursor: pointer;
+}
+
+.edittask-head-close:hover {
+    content: url('../img/icon_close_hover.png');
+}
 
 
+/* ############################################################ */
+/* ############################################################ */
+/* ############################################################ */
+/* ----- ViewTask-popup ----- */
+.viewtask-popup {
+    z-index: 50;
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #00000046;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.viewtask-popup:not(.active) {
+    opacity: 0;
+    transition: opacity 0.2s 0.2s ease-in-out;
+    pointer-events: none;
+}
+
+.viewtask-popup.active {
+    opacity: 1;
+    transition: opacity 0.2s ease-in-out;
+    pointer-events: all;
+}
+
+.viewtask-head-close {
+    position: absolute;
+    top:48px;
+    right: 40px;
+    cursor: pointer;
+}
+
+.viewtask-head-close:hover {
+    content: url('../img/icon_close_hover.png');
+}
 
 
 

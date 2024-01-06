@@ -1,0 +1,263 @@
+/* ############################################################ */
+.viewtask-popup-mainbox {
+    position: relative;
+    top: calc(100% + 10px);
+    width: 528px;
+    /* max-height: 80%; */
+    height: fit-content;
+    background-color: var(--col-white);
+    border-radius: 30px;
+    transition: top 0.2s ease-in-out;
+}
+
+.viewtask-popup.active .viewtask-popup-mainbox {
+    top: 0%;
+    transition: top 0.2s 0.2s ease-in-out;
+}
+
+.viewtask-popup-title {
+    display: none;
+    position: relative;
+    height: 30px;
+    background-color: transparent;
+    border-radius: 30px 30px 0 0;
+    background-color: lavender;
+}
+
+
+.viewtask-popupbox {
+    padding: 48px 28px 48px 40px;
+    scrollbar-gutter: stable;
+    /* height: calc(100% - 244px); */
+    height: 80%;
+    background-color: var(--col-white);
+    border-radius: 30px 30px 30px 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    overflow-y: auto;
+}
+
+.viewtask-titelbox, .task-descriptionbox, .task-datebox, .prioritybox-main, .assignedto-box {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.viewtask-titelbox {
+    gap: 12px;
+}
+
+.viewtask-title {
+    font-family: OpenSans;
+    font-size: var(--font-61);
+    line-height: 120%;
+    font-weight: 700;
+    word-wrap: break-word;
+}
+
+/* ------------------------------------------------------------ */
+.viewtask-description {
+    font-size: var(--font-19);
+}
+
+.viewtask-datebox {
+    display: flex;
+    align-items: center;
+    gap: 25px;
+}
+
+.viewlabel-bold {
+    font-size: var(--font-21);
+    font-weight: 700;
+}
+
+.viewtask-date {
+    font-size: var(--font-19);
+}
+
+.viewtask-priobox-main {
+    display: flex;
+    align-items: center;
+    gap: 25px;
+}
+
+.viewtask-priobox {
+    display: flex;
+    align-items: center;
+}
+
+.viewtask-prio {
+    padding: 4px 18px;
+    display: none;
+    align-items: center;
+    gap: 10px;
+}
+
+.viewtask-prio img {
+    width: 20px;
+    height: 9px;
+}
+
+.viewtask-prio.urgent img, .viewtask-prio.low img {
+    height: 15px;
+}
+
+.viewtask-priobox.urgent .viewtask-prio.urgent {
+    display: flex;
+}
+
+.viewtask-priobox.medium .viewtask-prio.medium {
+    display: flex;
+}
+
+.viewtask-priobox.low .viewtask-prio.low {
+    display: flex;
+}
+
+
+
+
+
+/* ############################################################ */
+/* ############################################################ */
+/* ############################################################ */
+.viewtask-dropdown-item {
+    padding: 7px 16px;
+    background-color: var(--col-white);
+    border-radius: 10px;
+    display: flex;
+    justify-content: space-between;
+    transition: background-color 0.1s ease;
+}
+
+.viewtask-dropdown-item.list {
+    padding: 12px 16px;
+}
+
+.viewtask-dropdown-namebox {
+    display: flex;
+    gap: 16px;
+}
+
+.viewtask-dropdown-badgebox {
+    display: flex;
+    align-items: center;
+}
+
+.viewtask-dropdown-badgebox {
+    width: 42px;
+    height: 42px;
+}
+
+.viewtask-dropdown-badge {
+    width: 42px;
+    height: 42px;
+    border: 2px solid var(--col-white);
+    border-radius: 999px;
+    font-size: var(--font-12);
+    line-height: 120%;
+    color: var(--col-white);
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}    
+
+/* ------------------------------------------------------------ */
+.input-box:has( .input:focus ) .subtask-plus {
+    display: none;
+}
+
+.input-box:has( .input:focus ) .subtask-new-btns {
+    display: flex;
+}
+
+.subtask-new-btns, .subtask-option-btns {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.subtask-option-btns {
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.1s ease-out;
+}
+
+.dropdown-item:hover .subtask-option-btns {
+    opacity: 1;
+    pointer-events: all;
+    transition: opacity 0.1s ease;
+}
+
+.v-separator.view {
+    width: 1px;
+    height: 24px;
+    background-color: var(--col-separator-new);
+    border: 1px solid var(--col-separator-new);
+}
+
+
+.viewtask-subtask-chk {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.viewtask-subtask-chk img:hover {
+    cursor: pointer;
+}
+
+
+
+
+/* ############################################################ */
+/* ############################################################ */
+/* ############################################################ */
+.viewtask-option-btns {
+    display: flex;
+    justify-content: flex-end;
+    gap: 8px;
+}
+
+.viewtask-item-option {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+}
+
+.min-w-32 span {
+    min-width: 32px;
+}
+
+.min-w-52 span {
+    min-width: 52px;
+}
+
+.viewtask-item-option:hover span {
+    color: var(--col-main-hover);
+    font-weight: 700;
+}
+
+.viewtask-item-option:hover .viewtask-option-del {
+    content: url('../img/icon_delete_main_hover2.png');
+}
+
+.viewtask-item-option:hover .viewtask-option-edit {
+    content: url('../img/icon_edit_main_hover2.png');
+}
+
+
+
+/* ############################################################ */
+.viewtask-assignedto-itembox {
+    max-height: calc(56px * 3);
+    overflow-y: auto;
+}
+
+
+
+

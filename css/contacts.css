@@ -2,6 +2,20 @@
     background-color: var(--col-menu-active);
 }
 
+@media (max-width: 1000px) {
+    .menu#contacts {
+        background-color: transparent;
+    }
+
+    .menu#contacts img {
+        content: url('../img/icon_menu_contacts_active.png');
+    }
+
+    .menu#contacts span {
+        color: var(--col-main);
+    }
+}
+
 .main {
     z-index: 0;
     position: fixed;
