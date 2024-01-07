@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="/css/start.css">
     <script src="./js/storage.js"></script>
     <script src="./js/start.js"></script>
-    <title>JOIN</title>
+    <title>JOIN - Log in</title>
 </head>
 <body tabindex="0">
     <!-- Animation-Page -->
@@ -37,9 +37,12 @@
                             <input type="email" id="login-email" class="input" pattern="[a-zA-Z0-9\.!%_\+\-]{1,64}[@][a-zA-Z0-9\.\-]+\.[a-zA-Z]{2,6}" placeholder="Email" autocomplete="email" required>
                             <img src="./img/icon_mail.png">
                         </div>
-                        <div class="input-box">
-                            <input type="password" id="login-password" class="input" placeholder="Password" autocomplete="current-password" required>
-                            <img id="login-passwordimg" class="passwordimg"  src="./img/icon_lock.png" onclick="togglePasswordView('login-password')"><span>Wrong password Ups! Try again.</span>
+                        <div class="input-box-container">
+                            <div class="input-box">
+                                <input type="password" id="login-password" class="input" placeholder="Password" autocomplete="current-password" required>
+                                <img id="login-passwordimg" class="passwordimg"  src="./img/icon_lock.png" onclick="togglePasswordView('login-password')">
+                            </div>
+                            <span class="input-box-msg">Wrong password Ups! Try again.</span>
                         </div>
                     </div>
                     <div class="checkbox-box" onclick="checkSwitch('login-privacypolicy', 'rememberme')">
@@ -83,23 +86,28 @@
                             <input type="email" id="signup-email" class="input" pattern="[a-zA-Z0-9\.!%_\+\-]{1,64}[@][a-zA-Z0-9\.\-]+\.[a-zA-Z]{2,6}" title="Valid email address please." placeholder="Email" autocomplete="email" required>
                             <img src="./img/icon_mail.png">
                         </div>
-                        <div class="input-box">
-                            <input type="password" id="signup-password" class="input" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[äöüÄÖÜß!@#$%^&*+_\-])[a-zA-Z0-9äöüÄÖÜß!@#$%^&*+_\-]{8,40}$" title="Password with minimum 8 letters, lowercase and uppercase letters, a numeric value and a special symbol (!@#$%^&*+-_)" placeholder="Password" autocomplete="new-password" required>
-                            <img id="passwordimg" class="passwordimg" src="./img/icon_lock.png" onclick="togglePasswordView('signup-password')">
-                            <div id="passwordInfo" class="d-none">
-                                Your password must meet the following criteria:
-                                <ul>
-                                    <li>At least 8 characters</li>
-                                    <li>At least one number</li>
-                                    <li>At least one uppercase letter</li>
-                                    <li>At least one lowercase letter</li>
-                                    <li>At least one special character (e.g. !@#$%^&*)</li>
-                                </ul>
+                        <div class="input-box-container">
+                            <div class="input-box">
+                                <input type="password" id="signup-password" class="input" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[äöüÄÖÜß!@#$%^&*+_\-])[a-zA-Z0-9äöüÄÖÜß!@#$%^&*+_\-]{8,40}$" title="Password with minimum 8 letters, lowercase and uppercase letters, a numeric value and a special symbol (!@#$%^&*+-_)" placeholder="Password" autocomplete="new-password" required>
+                                <img id="passwordimg" class="passwordimg" src="./img/icon_lock.png" onclick="togglePasswordView('signup-password')">
+                                <div id="passwordInfo" class="input-box-msg-large d-none1">
+                                    Your password must meet the following criteria:
+                                    <ul>
+                                        <li>At least 8 characters</li>
+                                        <li>At least one number</li>
+                                        <li>At least one uppercase letter</li>
+                                        <li>At least one lowercase letter</li>
+                                        <li>At least one special character (e.g. !@#$%^&*)</li>
+                                    </ul>
+                                </div>
                             </div>
                         </div>
-                        <div class="input-box ">
-                            <input type="password" id="signup-confirm-password" class="input" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[äöüÄÖÜß!@#$%^&*+_\-])[a-zA-Z0-9äöüÄÖÜß!@#$%^&*+_\-]{8,40}$" title="Confirm the password " placeholder="Confirm Password" autocomplete="new-password" required onblur="validConfirmPassword('signup-password', 'signup-confirm-password')">
-                            <img id="confpassimg" class="passwordimg" src="./img/icon_lock.png" onclick="togglePasswordView('signup-confirm-password')"><span>Ups! your password don´t match</span>
+                        <div class="input-box-container">
+                            <div class="input-box ">
+                                <input type="password" id="signup-confirm-password" class="input" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[äöüÄÖÜß!@#$%^&*+_\-])[a-zA-Z0-9äöüÄÖÜß!@#$%^&*+_\-]{8,40}$" title="Confirm the password " placeholder="Confirm Password" autocomplete="new-password" required onblur="validConfirmPassword('signup-password', 'signup-confirm-password')">
+                                <img id="confpassimg" class="passwordimg" src="./img/icon_lock.png" onclick="togglePasswordView('signup-confirm-password')">
+                            </div>
+                            <span class="input-box-msg">Ups! your password don´t match</span>
                         </div>
                     </div>
                     <div class="checkbox-box center" onclick="checkSwitch('signup-privacypolicy', 'signup-accept')">

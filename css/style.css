@@ -10,15 +10,11 @@
     outline: none;
     box-sizing: border-box;
     text-decoration: none;
-}
-
-/* ===== Scrollbar CSS ===== */
-/* Firefox */
-* {
     scrollbar-width: 12px;
     scrollbar-color: #c1c1c1 #f1f1f1;
 }
 
+/* ===== Scrollbar CSS ===== */
 /* Chrome, Edge, and Safari */
 *::-webkit-scrollbar {
     width: 12px;
@@ -324,6 +320,32 @@ body {
     flex-direction: column;
 }
 
+.input-box-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.input-box-msg {
+    position: absolute;
+    bottom: -16px;
+    color: var(--col-error);
+    font-size: 13px;
+    line-height: 120%;
+}
+
+.input-box-msg-large {
+    position: absolute;
+    bottom: -16px;
+    padding: 8px;
+    border-radius: 8px;
+    color: var(--col-error);
+    background-color: var(--col-white);
+    box-shadow: var(--sha-004015);
+    font-size: 13px;
+    line-height: 120%;
+}
+
 .input-box {
     width: 100%;
     padding: 12px 21px;
@@ -364,6 +386,10 @@ body {
 
 input[type="password"]:not(:focus) + .passwordimg {
     content: url('../img/icon_lock.png');
+}
+
+input[type="password"]:not(:focus) + .passwordimg:active {
+    content: url('../img/icon_password_off.png');
 }
 
 input[type="password"]:focus + .passwordimg {

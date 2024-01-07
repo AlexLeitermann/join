@@ -104,14 +104,8 @@
     height: 15px;
 }
 
-.viewtask-priobox.urgent .viewtask-prio.urgent {
-    display: flex;
-}
-
-.viewtask-priobox.medium .viewtask-prio.medium {
-    display: flex;
-}
-
+.viewtask-priobox.urgent .viewtask-prio.urgent,
+.viewtask-priobox.medium .viewtask-prio.medium,
 .viewtask-priobox.low .viewtask-prio.low {
     display: flex;
 }

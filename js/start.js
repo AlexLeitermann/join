@@ -33,6 +33,7 @@ function openIt(page) {
     element.classList.add('inview');
     if(page=='signup') {
         document.getElementById('signup-username').focus();
+        document.title = 'JOIN - Sign up';
     }
 }
 
@@ -41,6 +42,7 @@ function closeIt(page) {
     element.classList.remove('inview');
     if(page == 'signup') {
         document.getElementById('login-email').focus();
+        document.title = 'JOIN - Log in';
     }
 }
 

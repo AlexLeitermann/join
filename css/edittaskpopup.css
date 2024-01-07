@@ -170,8 +170,7 @@
 .input-box.active + .assignedto-itembox,
 .input-box.active ~ .assignedto-itembox, 
 .input-box.active + .category-itembox,
-.input-box.active ~ .category-itembox 
-{
+.input-box.active ~ .category-itembox {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -182,7 +181,7 @@
     content: url('../img/drop_down_arrowup.png');
 }
 
-/* .assignedto-box+.input-box.active */
+
 
 
 
