@@ -58,6 +58,7 @@ function togglePasswordView(field) {
 }
 
 
+// ################################################################################
 function signup() {
     const FORM_NAME = document.getElementById('signup-username');
     const FORM_EMAIL = document.getElementById('signup-email');
@@ -82,6 +83,7 @@ function checkValidations(name, email, password, confpass, privacypolicy) {
     validity += isValidPassword(password) * 8;
     validity += privacypolicy.checked * 16;
     validity += isAccountUnset(email) * 32;
+    console.log('Chacks:', validity);
     return validity;
 }
 
@@ -100,8 +102,21 @@ function isValidEmail(input) {
 
 function isValidPassword(input) {
     // let passwordRegex = /^[a-zA-Z0-9äöüÄÖÜß!@#$%^&*+\-]{8,40}$/;
-    let passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[äöüÄÖÜß!@#$%^&*+\-])[a-zA-Z0-9äöüÄÖÜß!@#$%^&*+\-]{8,40}$/;
+    let passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[äöüÄÖÜß!@#$%^&*+\-])[a-zA-Z0-9äöüÄÖÜß!@#$%^&*+\-]{8,128}$/;
     return passwordRegex.test(input);
+}
+
+
+function isAccountUnset(email) {
+    let result = true;
+    if(users.length > 0) {
+        users.forEach( (user) => {
+            if(user.email == email) {
+                result = false;
+            }
+        } );
+    }
+    return result;
 }
 
 
@@ -124,11 +139,6 @@ function validConfirmPassword(inputpass, inputconfirm) {
     if(elemPassword.value !== elemConfirm.value) {
 
     }
-}
-
-
-function isAccountUnset(email) {
-    
 }
 
 

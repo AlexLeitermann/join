@@ -41,11 +41,11 @@ async function getItem(key) {
     const url = `${STORAGE_URL}?key=${key}&token=${STORAGE_TOKEN}`;
     return fetch(url)
         .then(res => res.json())
-        .then(res => {
-        if (res && res.data) {
-            return res.data.value;
-        }
-        return null; 
+            .then(res => {
+                if (res && res.data) {
+                    return res.data.value;
+                }
+            return null; 
         });
 }
 

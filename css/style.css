@@ -10,6 +10,7 @@
     outline: none;
     box-sizing: border-box;
     text-decoration: none;
+    list-style-position: inside;
     scrollbar-width: 12px;
     scrollbar-color: #c1c1c1 #f1f1f1;
 }
@@ -324,22 +325,29 @@ body {
     width: 100%;
     display: flex;
     flex-direction: column;
+    /* border-top: 1px dashed black; */
+}
+
+.plus24 {
+    margin-bottom: 24px;
 }
 
 .input-box-msg {
     position: absolute;
-    bottom: -16px;
+    bottom: -24px;
     color: var(--col-error);
     font-size: 13px;
     line-height: 120%;
 }
 
 .input-box-msg-large {
+    z-index: 60;
     position: absolute;
-    bottom: -16px;
+    top: -110px;
     padding: 8px;
     border-radius: 8px;
-    color: var(--col-error);
+    /* color: var(--col-error); */
+    color: var(--col-main);
     background-color: var(--col-white);
     box-shadow: var(--sha-004015);
     font-size: 13px;
