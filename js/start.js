@@ -1,20 +1,27 @@
 document.addEventListener('DOMContentLoaded', async function () {
-    await init();
+    await initStart();
 });
 
+let users = [];
 let contacts = [];
 let tasks = [];
-let users = [];
+let lastContactId = 0;
+let lastUserId = 0;
+let lastTaskId = 0;
 
-async function init() {
+
+async function initStart() {
     await loadFromOnlineStorage();
+    checkLastUserId();
+    // if Remember me = true
+
 }
 
 
 async function loadFromOnlineStorage() {
-    contacts = await loadData('contacts');
-    tasks = await loadData('tasks');
-    users = await loadData('users');
+    users = await returnJsonAtLoadData('users');
+    // contacts = await returnJsonAtLoadData('contacts');
+    // tasks = await returnJsonAtLoadData('tasks');
 }
 
 
@@ -49,11 +56,7 @@ function closeIt(page) {
 
 function togglePasswordView(field) {
     const passwordfield = document.getElementById(field);
-    if(passwordfield.type == "password") {
-        passwordfield.type = "text";
-    } else {
-        passwordfield.type = "password";
-    }
+    passwordfield.type == "password" ? passwordfield.type = "text" : passwordfield.type = "password"; 
     passwordfield.focus();
 }
 
@@ -67,10 +70,12 @@ function signup() {
     const FORM_PRIVACYPOLICY = document.getElementById('signup-privacypolicy');
     if(checkValidations(FORM_NAME.value, FORM_EMAIL.value, FORM_PASSWORD.value, FORM_CONFPASS.value, FORM_PRIVACYPOLICY) == 63) {
         // alles ok
-        createNewUser(FORM_NAME, FORM_EMAIL, FORM_PASSWORD);
+        console.log('OK');
+        createNewUser(FORM_NAME.value, FORM_EMAIL.value, FORM_PASSWORD.value);
     } else {
         // es fehlt was
-        signupError(checkValidations(FORM_NAME.value, FORM_EMAIL.value, FORM_PASSWORD.value, FORM_CONFPASS.value, FORM_PRIVACYPOLICY));
+        console.log('NOT');
+        // signupError(checkValidations(FORM_NAME.value, FORM_EMAIL.value, FORM_PASSWORD.value, FORM_CONFPASS.value, FORM_PRIVACYPOLICY));
     }
 }
 
@@ -83,7 +88,7 @@ function checkValidations(name, email, password, confpass, privacypolicy) {
     validity += isValidPassword(password) * 8;
     validity += privacypolicy.checked * 16;
     validity += isAccountUnset(email) * 32;
-    console.log('Chacks:', validity);
+    console.log('Checks:', validity);
     return validity;
 }
 
@@ -101,7 +106,6 @@ function isValidEmail(input) {
 
 
 function isValidPassword(input) {
-    // let passwordRegex = /^[a-zA-Z0-9äöüÄÖÜß!@#$%^&*+\-]{8,40}$/;
     let passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[äöüÄÖÜß!@#$%^&*+\-])[a-zA-Z0-9äöüÄÖÜß!@#$%^&*+\-]{8,128}$/;
     return passwordRegex.test(input);
 }
@@ -132,13 +136,166 @@ function showPasswordRequirements() {
 }
   
 
+/**
+ * Displays confirm password requirements for a short time.
+ */
+function showConfirmPasswordRequirements() {
+    document.getElementById("passwordConfirmInfo").classList.remove('d-none');
+  
+    setTimeout(function () {
+      document.getElementById("passwordConfirmInfo").classList.add('d-none');
+    }, 4000);
+}
+  
+
 
 function validConfirmPassword(inputpass, inputconfirm) {
     let elemPassword = document.getElementById(inputpass);
     let elemConfirm = document.getElementById(inputconfirm);
-    if(elemPassword.value !== elemConfirm.value) {
+    if(elemPassword.value !== "" && elemPassword.value !== elemConfirm.value) {
+        showConfirmPasswordRequirements();
+        return false;
+    }
+    return true;
+}
 
+
+// ################################################################################
+// ################################################################################
+// ################################################################################
+async function createNewUser(newName, newEmail, newPassword) {
+    let answer = 0;
+    let hashPassword = '';
+    lastUserId++;
+    lastContactId++;
+    await calcHash(newPassword).then( (passHex) => hashPassword = passHex );
+    console.log(newPassword+':', hashPassword);
+    let dataSet1 = newDatasetUser(newName, newEmail, hashPassword);
+    let dataSet2 = newDatasetContact(newName, newEmail);
+
+    users.push(dataSet1[0]);
+    contacts.push(dataSet2[0]);
+
+    answer += (await saveData('users', users)) * 1;
+    answer += (await saveData('contacts-id' + lastUserId, contacts)) * 2;
+    answer += (await saveData('tasks-id' + lastUserId, tasks)) * 4;
+    console.log('createNewUser:', answer);
+}
+
+
+function newDatasetUser(newName, newEmail, newPassword) {
+    return [
+        {
+            "id": lastUserId,
+            "name": newName,
+            "initials": initialsFrom(newName),
+            "contactid": lastContactId,
+            "email": newEmail,
+            "password": newPassword
+        },
+    ];
+}
+
+
+function newDatasetContact(newName, newEmail) {
+    return [
+        {
+            "id": lastContactId,
+            "userid": lastUserId,
+            "assigned": lastUserId,
+            "name": newName,
+            "initials": initialsFrom(newName),
+            "email": newEmail,
+            "phone": "Please set the Phonenumber.",
+            "badgecolor": randomBadgeColor()
+        },
+    ];
+}
+
+
+/**
+ * Generates a random number from 0 to 14 for the color of the badge
+ * 
+ * @returns Number 0 to 14
+ */
+function randomBadgeColor() {
+    return Math.floor(Math.random() * 15);
+}
+
+
+// ################################################################################
+// ################################################################################
+// ################################################################################
+/**
+ * Funktion zum Verarbeiten des Login-Formulars.
+ * 
+ * @param {Event} event - Das Event-Objekt.
+ */
+function btnLogin(event) {
+    event.preventDefault();
+    const clickedButton = event.submitter;
+    if (clickedButton && clickedButton.name === 'userLogin') {
+        console.log('User Login pressed');
+        userLogin();
+    } else if (clickedButton && clickedButton.name === 'guestLogin') {
+        console.log('Guest Login pressed');
+        guestLogin();
     }
 }
+
+
+async function userLogin() {
+    const loginEmail = document.getElementById('login-email').value;
+    const loginPassword = document.getElementById('login-password').value;
+    let hashPassword = '';
+    await calcHash(loginPassword).then( (passHex) => hashPassword = passHex );
+    let currentUser = authenticateUser(users, loginEmail, hashPassword);
+    if(currentUser) {
+        setSessionData('cuid', currentUser.id);
+        setSessionData('cuname', currentUser.name);
+        setSessionData('cuinitials', currentUser.initials);
+        // Benutzer gefunden und eingeloggt
+        window.location.href = 'summary.html';
+    } else {
+        // Benutzer nicht gefunden
+        console.log('User not found.');
+    }
+}
+
+
+function guestLogin() {
+    setSessionData('cuid', [-1]);
+    setSessionData('cuname', 'Guest');
+    setSessionData('cuinitials', 'G');
+}
+
+
+
+function getIDfromUserLogin(password) {
+    if(users.length < 0) {
+        return null;
+    } else {
+        let index = passwordToIndex(password, users);
+        setSessionData('cuid', [users[index].id]);
+        setSessionData('cuname', users[index].name);
+        setSessionData('cuinitials', users[index].initials);
+    }
+}
+
+
+/**
+ * Authenticates a user based on email and password.
+ * @param {Array} arr
+ * @param {string} email
+ * * @param {string} password
+ */
+function authenticateUser(arr, email, password) {
+    return arr.find(
+        (element) => element.email === email && element.password === password
+    );
+}
+
+
+
 
 

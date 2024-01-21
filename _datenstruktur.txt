@@ -1,6 +1,11 @@
+Online-Storage:
+===============
+
 Users:
 -----
 id              - number
+initials        - text
+name            - text
 contactid       - number
 email           - text
 password        - text (hash)
@@ -32,3 +37,16 @@ subtasks        - array
 Contacts        - array
 
 
+localStorage:
+=============
+
+cuid            - json
+    name        - text
+    initials    - text
+    id          - number
+
+
+
+
+
+    

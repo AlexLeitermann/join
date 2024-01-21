@@ -1,39 +1,98 @@
+.menu#admin {
+    background-color: var(--col-menu-active);
+}
+
+@media (max-width: 1000px) {
+    .menu#admin {
+        background-color: transparent;
+    }
+
+    .menu#admin img {
+        content: url('../img/icon_menu_admin_active.png');
+    }
+
+    .menu#admin span {
+        color: var(--col-main);
+    }
+}
+
 .main {
     position: fixed;
     right: 0;
     bottom: 0;
+    padding: 10px;
     width: calc(100% - 232px);
     height: calc(100% - 96px);
     /* background-color: lightpink; */
     display: flex;
     flex-direction: column;
     gap: 10px;
+    transition-property: width, height;
+    transition-timing-function: ease-in-out, ease-in-out;
+    transition-delay: 0ms, 0ms;
+    transition-duration: 100ms, 200ms;
 }
 
 .container {
     position: relative;
-    background-color: lavender;
-    box-sizing: border-box;
+    padding: 10px;
     max-width: 300px;
-    max-height: 100px;
+    /* max-height: 100px; */
     width: 100%;
-    height: 100%;
+    /* height: 100%; */
+    background-color: var(--col-badge-hover);
+    box-sizing: border-box;
+    border: 1px solid lightgray;
+    border-radius: 8px;
     overflow-y: auto;
-    padding: 24px 12px 24px 24px;
     scrollbar-gutter: stable;
 }
 
+.description {
+    /* height: 100%; */
+    display: flex;
+    justify-content: space-between;
+}
+
+
 .inhalt {
-    height: 100%;
+    /* height: 200%; */
     display: flex;
     justify-content: space-between;
 }
 
-
-
-.inhalt2 {
-    height: 200%;
-    display: flex;
-    justify-content: space-between;
+.button {
+    padding: 8px 12px;
+    border: 1px solid lightgray;
+    border-radius: 5px;
+    height: min-content;
+    color: black;
+    cursor: pointer;
 }
 
+.button:hover {
+    border: 1px solid var(--col-main);
+    background-color: var(--col-menu-hover);
+    box-shadow: var(--sha-004015);
+}
+
+.inp-id {
+    width: 50px;
+    height: 32px;
+    border: 1px solid lightgray;
+    border-radius: 5px;
+}
+
+
+
+
+@media (max-width: 1000px) {
+    .main {
+        width: 100%;
+        height: calc(100% - 80px);
+        transition-property: width, height;
+        transition-timing-function: ease-in-out, ease-in-out;
+        transition-delay: 125ms, 0ms;
+        transition-duration: 100ms, 200ms;
+    }
+}

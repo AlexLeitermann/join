@@ -13,7 +13,13 @@ async function loadData(key) {
     } else {
           return JSON.parse(loadedData);
     }
-  }
+}
+
+
+async function returnJsonAtLoadData(key) {
+    let checkLoadData = await loadData(key);
+    return checkLoadData == false ? [] : checkLoadData;
+}
 
 
 /**
@@ -27,6 +33,24 @@ async function saveData(key, value) {
     if (saveData.status == "success") {
         return true;
     } else {
+        console.log('storage.js - saveData() - error:', saveData.message);
+        return false;
+    }
+}
+
+
+/**
+ * Saves data to storage.
+ * @param {string} - key
+ * @param {any} - value
+ * @returns {Promise} - boolean
+ */
+async function deleteData(key) {
+    let removeData = await deleteItem(key);
+    if (removeData.status == "success") {
+        return true;
+    } else {
+        console.log('storage.js - deleteData() - error:', removeData.message);
         return false;
     }
 }
@@ -34,8 +58,8 @@ async function saveData(key, value) {
 
 /**
  * Gets an item from remote storage.
- * @param {string} 
- * @returns {Promise} 
+ * @param {string} - key
+ * @returns {Promise} - null or string
  */
 async function getItem(key) {
     const url = `${STORAGE_URL}?key=${key}&token=${STORAGE_TOKEN}`;
@@ -52,11 +76,22 @@ async function getItem(key) {
 
 /**
  * Sets an item in remote storage.
- * @param {string} 
- * @param {any} 
+ * @param {string} - key
+ * @param {any} - value
  */
 async function setItem(key, value) {
     const payload = { key, value, token: STORAGE_TOKEN };
+    return fetch(STORAGE_URL, { method: 'POST', body: JSON.stringify(payload) })
+    .then(res => res.json());
+}
+
+
+/**
+ * Delete an item in remote storage.
+ * @param {string} - key
+ */
+async function deleteItem(key) {
+    const payload = { key, delete: '', token: STORAGE_TOKEN };
     return fetch(STORAGE_URL, { method: 'POST', body: JSON.stringify(payload) })
     .then(res => res.json());
 }

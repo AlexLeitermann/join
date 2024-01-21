@@ -8,7 +8,9 @@
         <link rel="stylesheet" href="/css/color.css" />
         <link rel="stylesheet" href="/css/style.css" />
         <link rel="stylesheet" href="/css/admin.css" />
+        <script src="./js/storage.js"></script>
         <script src="./js/script.js"></script>
+        <script src="./js/admin.js"></script>
         <title>JOIN - Admin</title>
     </head>
     <body tabindex="0">
@@ -18,13 +20,32 @@
         </div>
         <div class="main">
             <div class="container">
+                <div class="description">
+                    <span>User</span><span>Read</span>
+                </div>
                 <div class="inhalt">
-                    <span>A</span><span>B</span>
+                    <button class="button" onclick="logUsers()">C-Log</button>
+                    <button class="button" onclick="resetUsers()">Clear</button>
                 </div>
             </div>
             <div class="container">
-                <div class="inhalt2">
-                    <span>A</span><span>B</span>
+                <div class="description">
+                    <span>Contact</span><span id="statusContact">Guest</span>
+                </div>
+                <div class="inhalt">
+                    <button class="button" onclick="logContacts()">C-Log</button>
+                    <input type="number" name="contactId" min="-1" value="-1" id="contactId" class="inp-id" onchange="changeContactID()">
+                    <button class="button" onclick="resetContacts()" id="btn-reset-contact">Erase</button>
+                </div>
+            </div>
+            <div class="container">
+                <div class="description">
+                    <span>Tasks</span><span id="statusTask">Guest</span>
+                </div>
+                <div class="inhalt">
+                    <button class="button" onclick="logTasks()">C-Log</button>
+                    <input type="number" name="taskId" min="-1" value="-1" id="taskId" class="inp-id" onchange="changeTaskID()">
+                    <button class="button" onclick="resetTasks()" id="btn-reset-task">Erase</button>
                 </div>
             </div>
         </div>

@@ -1,130 +1,134 @@
 <!DOCTYPE html>
 <html lang="de">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
-    <link rel="shortcut icon" href="./img/Logo_med_blue.png" type="image/x-icon">
-    <link rel="stylesheet" href="/css/fonts.css">
-    <link rel="stylesheet" href="/css/color.css">
-    <link rel="stylesheet" href="/css/style.css">
-    <link rel="stylesheet" href="/css/start.css">
-    <script src="./js/storage.js"></script>
-    <script src="./js/start.js"></script>
-    <title>JOIN - Log in</title>
-</head>
-<body tabindex="0">
-    <!-- Animation-Page -->
-    <div class="slide" id="slide">
-        <img class="slidelogo" src="./img/Logo_big_wh.png">
-    </div>
-    <!-- Login-Page -->
-    <div class="login" id="login">
-        <div class="signup-link-box">
-            <span class="standard-text">Not a Join user?</span>
-            <button class="btn-primary" onclick="openIt('signup')">Sign up</button>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+        <link rel="shortcut icon" href="./img/Logo_med_blue.png" type="image/x-icon">
+        <link rel="stylesheet" href="/css/fonts.css">
+        <link rel="stylesheet" href="/css/color.css">
+        <link rel="stylesheet" href="/css/style.css">
+        <link rel="stylesheet" href="/css/start.css">
+        <script src="./js/storage.js"></script>
+        <script src="./js/script.js"></script>
+        <script src="./js/start.js"></script>
+        <title>JOIN - Log in</title>
+    </head>
+    <body tabindex="0">
+        <!-- Animation-Page -->
+        <div class="slide" id="slide">
+            <img class="slidelogo" src="./img/Logo_big_wh.png">
         </div>
-        <div class="legalnotice-link-box">
-            <a href="privacypolicy.html" class="link-text">Privacy Policy</a><a href="legalnotice.html" class="link-text">Legal Notice</a>
-        </div>
-        <div class="login-formular-box">
-            <form class="login-form" action="login(); return false;" autocomplete="off">
-                <div class="login-title-box">
-                    <span class="login-title">Log in</span>
-                </div>
-                <div class="login-fields">
-                    <div class="login-input-fields">
-                        <div class="input-box">
-                            <input type="email" id="login-email" class="input" pattern="[a-zA-Z0-9\.!%_\+\-]{1,64}[@][a-zA-Z0-9\.\-]+\.[a-zA-Z]{2,6}" placeholder="Email" autocomplete="email" required>
-                            <img src="./img/icon_mail.png">
-                        </div>
-                        <div class="input-box-container plus24">
-                            <div class="input-box">
-                                <input type="password" id="login-password" class="input" placeholder="Password" autocomplete="current-password" required>
-                                <img id="login-passwordimg" class="passwordimg"  src="./img/icon_lock.png" onclick="togglePasswordView('login-password')">
-                            </div>
-                            <span class="input-box-msg d-none">Wrong password Ups! Try again.</span>
-                        </div>
-                    </div>
-                    <div class="checkbox-box" onclick="checkSwitch('login-privacypolicy', 'rememberme')">
-                        <input class="input-hiddencheckbox" type="checkbox" id="login-privacypolicy" required>
-                        <label for="login-privacypolicy">
-                            <img id="rememberme" src="./img/chk_false_main.png">
-                        </label>
-                        <label class="hiddencheckboxtext" for="login-privacypolicy">
-                            <span class="hiddencheckboxtext">Remember me</span>
-                        </label>
-                    </div>
-                </div>
-                <div class="login-buttons">
-                    <button type="button" class="btn-primary large">Log in</button>
-                    <button type="button" class="btn-secondary large">Guest log in</button>
-                </div>
-            </form>
-        </div>
-    </div>
-    <!-- Signup-Page -->
-    <div class="signup" id="signup">
-        <img class="signup-logo" src="./img/Logo_big_wh.png">
-        <div class="legalnotice-link-box">
-            <a href="privacypolicy.html" class="link-text white">Privacy Policy</a><a href="legalnotice.html" class="link-text white">Legal Notice</a>
-        </div>
-        <div class="signup-formular-box">
-            <div class="signup-back-arrow" onclick="closeIt('signup')">
-                <img src="./img/back_arrow_main.png">
+        <!-- Login-Page -->
+        <div class="login" id="login">
+            <div class="signup-link-box">
+                <span class="standard-text">Not a Join user?</span>
+                <button class="btn-primary" onclick="openIt('signup')">Sign up</button>
             </div>
-            <form class="signup-form" onsubmit="signup(); return false;" autocomplete="off">
-                <div class="login-title-box">
-                    <span class="login-title">Sign up</span>
-                </div>
-                <div class="signup-fields">
-                    <div class="signup-input-fields">
-                        <div class="input-box">
-                            <input type="text" id="signup-username" class="input" pattern="[A-Za-zäöüÄÖÜ]+(?: [A-Za-zäöüÄÖÜ\-]+)+" title="First and last name please." placeholder="Name" autocomplete="username" required>
-                            <img src="./img/icon_person.png">
-                        </div>
-                        <div class="input-box">
-                            <input type="email" id="signup-email" class="input" pattern="[a-zA-Z0-9\.!%_\+\-]{1,64}[@][a-zA-Z0-9\.\-]+\.[a-zA-Z]{2,6}" title="Valid email address please." placeholder="Email" autocomplete="email" required>
-                            <img src="./img/icon_mail.png">
-                        </div>
-                        <div class="input-box-container">
+            <div class="legalnotice-link-box">
+                <a href="privacypolicy.html" class="link-text">Privacy Policy</a><a href="legalnotice.html" class="link-text">Legal Notice</a>
+            </div>
+            <div class="login-formular-box">
+                <form class="login-form" onsubmit="btnLogin(event); return false;" autocomplete="off">
+                    <div class="login-title-box">
+                        <span class="login-title">Log in</span>
+                    </div>
+                    <div class="login-fields">
+                        <div class="login-input-fields">
                             <div class="input-box">
-                                <input type="password" id="signup-password" class="input" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[äöüÄÖÜß!@#$%^&*+_\-])[a-zA-Z0-9äöüÄÖÜß!@#$%^&*+_\-]{8,40}$" title="Password with minimum 8 letters, lowercase and uppercase letters, a numeric value and a special symbol (!@#$%^&*+-_)" placeholder="Password" autocomplete="new-password" required>
-                                <img id="passwordimg" class="passwordimg" src="./img/icon_lock.png" onclick="togglePasswordView('signup-password')">
-                                <div id="passwordInfo" class="input-box-msg-large d-none">
-                                    Your password must meet the following criteria:
-                                    <ul>
-                                        <li>At least 8 characters</li>
-                                        <li>At least one number</li>
-                                        <li>At least one uppercase letter</li>
-                                        <li>At least one lowercase letter</li>
-                                        <li>At least one special character (e.g. !@#$%^&*+-_)</li>
-                                    </ul>
+                                <input type="email" id="login-email" class="input" pattern="[a-zA-Z0-9\.!%_\+\-]{1,64}[@][a-zA-Z0-9\.\-]+\.[a-zA-Z]{2,6}" placeholder="Email" autocomplete="email" required>
+                                <img src="./img/icon_mail.png">
+                            </div>
+                            <div class="input-box-container plus24">
+                                <div class="input-box">
+                                    <input type="password" id="login-password" class="input" placeholder="Password" autocomplete="current-password" required>
+                                    <img id="login-passwordimg" class="passwordimg"  src="./img/icon_lock.png" onclick="togglePasswordView('login-password')">
+                                </div>
+                                <span class="input-box-msg d-none">Wrong password Ups! Try again.</span>
+                            </div>
+                        </div>
+                        <div class="checkbox-box" onclick="checkSwitch('login-privacypolicy', 'rememberme')">
+                            <input class="input-hiddencheckbox" type="checkbox" id="login-privacypolicy">
+                            <label for="login-privacypolicy">
+                                <img id="rememberme" src="./img/chk_false_main.png">
+                            </label>
+                            <label class="hiddencheckboxtext" for="login-privacypolicy">
+                                <span class="hiddencheckboxtext">Remember me</span>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="login-buttons">
+                        <button type="submit" name="userLogin" class="btn-primary large">Log in</button>
+                        <button type="submit" name="guestLogin" class="btn-secondary large">Guest log in</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <!-- Signup-Page -->
+        <div class="signup" id="signup">
+            <img class="signup-logo" src="./img/Logo_big_wh.png">
+            <div class="legalnotice-link-box">
+                <a href="privacypolicy.html" class="link-text white">Privacy Policy</a><a href="legalnotice.html" class="link-text white">Legal Notice</a>
+            </div>
+            <div class="signup-formular-box">
+                <div class="signup-back-arrow" onclick="closeIt('signup')">
+                    <img src="./img/back_arrow_main.png">
+                </div>
+                <form class="signup-form" onsubmit="signup(); return false;" autocomplete="off">
+                    <div class="login-title-box">
+                        <span class="login-title">Sign up</span>
+                    </div>
+                    <div class="signup-fields">
+                        <div class="signup-input-fields">
+                            <div class="input-box">
+                                <input type="text" id="signup-username" class="input" pattern="[A-Za-zäöüÄÖÜ]+(?: [A-Za-zäöüÄÖÜ\-]+)+" title="First and last name please." placeholder="Name" autocomplete="username" required>
+                                <img src="./img/icon_person.png">
+                            </div>
+                            <div class="input-box-container">
+                                <div class="input-box">
+                                    <input type="email" id="signup-email" class="input" pattern="[a-zA-Z0-9\.!%_\+\-]{1,64}[@][a-zA-Z0-9\.\-]+\.[a-zA-Z]{2,6}" title="Valid email address please." placeholder="Email" autocomplete="email" required>
+                                    <img src="./img/icon_mail.png">
+                                </div>
+                                <span id="accountExistInfo" class="input-box-msg d-none">Ups! Account allready exist!</span>
+                            </div>
+                            <div class="input-box-container">
+                                <div class="input-box">
+                                    <input type="password" id="signup-password" class="input" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[äöüÄÖÜß!@#$%^&*+_\-])[a-zA-Z0-9äöüÄÖÜß!@#$%^&*+_\-]{8,40}$" title="Password with minimum 8 letters, lowercase and uppercase letters, a numeric value and a special symbol (!@#$%^&*+-_)" placeholder="Password" autocomplete="new-password" required>
+                                    <img id="passwordimg" class="passwordimg" src="./img/icon_lock.png" onclick="togglePasswordView('signup-password')">
+                                    <div id="passwordInfo" class="input-box-msg-large d-none">
+                                        Your password must meet the following criteria:
+                                        <ul>
+                                            <li>At least 8 characters</li>
+                                            <li>At least one number</li>
+                                            <li>At least one uppercase letter</li>
+                                            <li>At least one lowercase letter</li>
+                                            <li>At least one special character (e.g. !@#$%^&*+-_)</li>
+                                        </ul>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="input-box-container">
-                            <div class="input-box ">
-                                <input type="password" id="signup-confirm-password" class="input" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[äöüÄÖÜß!@#$%^&*+_\-])[a-zA-Z0-9äöüÄÖÜß!@#$%^&*+_\-]{8,40}$" title="Confirm the password " placeholder="Confirm Password" autocomplete="new-password" required onblur="validConfirmPassword('signup-password', 'signup-confirm-password')">
-                                <img id="confpassimg" class="passwordimg" src="./img/icon_lock.png" onclick="togglePasswordView('signup-confirm-password')" onkeyup="checkConfirmPassword()">
+                            <div class="input-box-container">
+                                <div class="input-box ">
+                                    <input type="password" id="signup-confirm-password" class="input" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[äöüÄÖÜß!@#$%^&*+_\-])[a-zA-Z0-9äöüÄÖÜß!@#$%^&*+_\-]{8,40}$" title="Confirm the password " placeholder="Confirm Password" autocomplete="new-password" required onblur="validConfirmPassword('signup-password', 'signup-confirm-password')">
+                                    <img id="confpassimg" class="passwordimg" src="./img/icon_lock.png" onclick="togglePasswordView('signup-confirm-password')" onkeyup="checkConfirmPassword()">
+                                </div>
+                                <span id="passwordConfirmInfo" class="input-box-msg d-none">Ups! your password don´t match</span>
                             </div>
-                            <span class="input-box-msg d-none">Ups! your password don´t match</span>
+                        </div>
+                        <div class="checkbox-box center" onclick="checkSwitch('signup-privacypolicy', 'signup-accept')">
+                            <input type="checkbox" id="signup-privacypolicy" class="input-hiddencheckbox" required>
+                            <label for="signup-privacypolicy"><img id="signup-accept" src="./img/chk_false_main.png"></label>
+                            <label for="signup-privacypolicy" class="hiddencheckboxtext">
+                                <span class="hiddencheckboxtext">I accept the</span>
+                                <a href="privacypolicy.html" class="link-text blue underline" target="_blank">Privacy Policy</a>
+                            </label>
                         </div>
                     </div>
-                    <div class="checkbox-box center" onclick="checkSwitch('signup-privacypolicy', 'signup-accept')">
-                        <input class="input-hiddencheckbox" type="checkbox" id="signup-privacypolicy" required>
-                        <label for="signup-privacypolicy"><img id="signup-accept" src="./img/chk_false_main.png"></label>
-                        <label class="hiddencheckboxtext" for="signup-privacypolicy">
-                            <span class="hiddencheckboxtext">I accept the</span>
-                            <a href="privacypolicy.html" class="link-text blue underline" target="_blank">Privacy Policy</a>
-                        </label>
+                    <div class="signup-buttons">
+                        <button type="submit" id="signupbtn" class="btn-primary">Sign up</button>
                     </div>
-                </div>
-                <div class="signup-buttons">
-                    <button type="submit" id="signupbtn" class="btn-primary">Sign up</button>
-                </div>
-            </form>
-        </div>
+                </form>
+            </div>
 
-    </div>
-</body>
+        </div>
+    </body>
 </html>
