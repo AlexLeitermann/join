@@ -7,14 +7,19 @@
             <span>Kanban Project Management Tool</span>
         </div>
         <div class="header-main-help">
-            <img src="./img/icon_help24.png">
+            <a href="./help.html"><img src="./img/icon_help24.png"></a>
         </div>
-        <div class="header-main-user-mainbox">
+        <div class="header-main-user-mainbox user-icon" id="user-icon" onclick="useroptions()">
             <div class="header-main-user-border">
                 <div class="header-main-user-letters">
-                    <span class="header-main-user-initials">MM</span>
+                    <span class="header-main-user-initials" id="header-main-user-initials">--</span>
                 </div>
             </div>
         </div>
     </div>
+</div>
+<div class="useroptions" id="useroptions">
+    <a class="useroptions-link" href="./legalnotice.html" onclick="useroptions(true)">Legal Notice</a>
+    <a class="useroptions-link" href="./privacypolicy.html" onclick="useroptions(true)">Privacy Policy</a>
+    <a class="useroptions-link" href="#" onclick="userLogout()">Log out</a>
 </div>

@@ -20,6 +20,7 @@
     position: fixed;
     top: 96px;
     left: 232px;
+    min-width: 350px;
     width: calc(100% - 232px);
     height: calc(100% - 96px);
     transition: top 0.2s ease-in-out;
@@ -44,11 +45,13 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-wrap: wrap;
     gap: 22px;
 }
 
 .welcome-hello {
     font-size: 48px;
+    text-wrap: nowrap;
 }
 
 .welcome-name {
@@ -56,6 +59,7 @@
     line-height: 120%;
     font-weight: 700;
     color: var(--col-main);
+    text-align: center;
 }
 
 .overview-main {
@@ -77,9 +81,22 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    cursor: pointer;
+    transition: all 0.1s ease-in-out;
 }
 
-.taskcard.large3 {
+.taskcard:hover {
+    border-radius: 0 30px 30px 30px;
+    transition: all 0.1s ease-in-out;
+    background-color: var(--col-main-hover);
+}
+
+.taskcard:hover .taskcard-count,
+.taskcard:hover .taskcard-text {
+    color: var(--col-white);
+}
+
+.taskcard.urgent {
     padding: 28px 48px;
     width: 672px;
     color: var(--col-white);
@@ -88,6 +105,22 @@
     flex-shrink: 0;
     display: flex;
     gap: 35px;
+}
+
+.taskcard.urgent:hover, .taskcard.todo:hover {
+    background-color: var(--col-white);
+}
+
+.taskcard.urgent:hover .taskcard-count,
+.taskcard.urgent:hover .datebox span,
+.taskcard.urgent:hover .taskcard-text, 
+.taskcard.todo:hover .taskcard-count,
+.taskcard.todo:hover .taskcard-text {
+    color: var(--col-main);
+}
+
+.taskcard.urgent:hover .separator-v {
+    background-color: var(--col-main-hover);
 }
 
 .taskcard .center-cross {
@@ -120,13 +153,24 @@
     gap: 13px;
 }
 
-.taskcard.alltasks {
+.taskcard.todo {
     background-color: var(--col-menu-active);
 }
 
 .taskcard.flat {
     height: 191px;
 }
+
+.taskcard-count {
+    font-size: var(--font-48);
+    font-weight: 700;
+}
+
+.taskcard-text {
+    font-size: var(--font-23);
+}
+
+
 
 /* ############################################################ */
 .badge-logo {
@@ -135,17 +179,179 @@
     border-radius: 999px;
 }
 
-.large3 .badge-logo {
+.taskcard:not(.todo) .badge-logo {
     border: 3px solid var(--col-white);
 }
+
+/* .large3 .badge-logo {
+    border: 3px solid var(--col-white);
+} */
 
 
 
 /* ############################################################ */
+@media (max-width: 1150px) {
+    .main {
+        padding-left: 0px;
+        padding-right: 0px;
+    }
+
+    .welcome-hello {
+        padding-left: 16px;
+        font-size: var(--font-32);
+    }
+
+    .welcome-name {
+        font-size: var(--font-48);
+    }
+
+    .summary-main {
+        padding-bottom: 8px;
+        max-width: none;
+        width: 100%;
+        scrollbar-gutter: stable;
+        justify-content: flex-start;
+        overflow-y: auto;
+    }
+
+    .overview-main {
+        padding: 0 16px;
+        scrollbar-gutter: stable;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: repeat(4, 219px);
+        flex-wrap: wrap;
+        gap: 32px;
+        grid-template-areas:    'urgent urgent'
+                                'todo todo'
+                                'alltasks inprogress'
+                                'awaiting done';
+    }                            
+
+    .taskcard {
+        width: auto;
+        height: auto;
+    }
+
+    .taskcard, 
+    .taskcard.flat {
+        height: 219px;
+    }
+
+    .taskcard.urgent {
+        grid-area: urgent;
+        width: 100%;
+    }
+
+    .taskcard.alltasks {
+        grid-area: alltasks;
+    }    
+    
+    .taskcard.todo {
+        grid-area: todo;
+    }
+
+    .taskcard.inprogress {
+        grid-area: inprogress;
+    }
+
+    .taskcard.awaiting {
+        grid-area: awaiting;
+    }
+
+    .taskcard.done {
+        grid-area: done;
+    }
+}
+
+
 @media (max-width: 1000px) {
     .main {
         top: 80px;
-        height: calc(100% - 80px);
+        left: auto;
+        width: 100%;
+        height: calc(100% - 160px);
         transition: top 0.2s ease-in-out;
     }
+
+    .summary-main {
+        gap: 36px;
+    }
 }
+
+
+@media (max-width: 500px) {
+    .summary-welcome {
+        flex-direction: column;
+    }
+
+    .welcome-hello {
+        padding-left: 16px;
+        font-size: var(--font-19);
+    }
+
+    .welcome-name {
+        font-size: var(--font-23);
+    }
+
+    .summary-main {
+        gap: 24px;
+    }
+
+    .overview-main {
+        grid-template-rows: repeat(4, 150px);
+        gap: 16px;
+    }
+
+    .taskcard, 
+    .taskcard.flat {
+        height: auto;
+    }
+
+    .taskcard.urgent {
+        padding: 20px;
+    }
+
+    .center {
+        align-self: auto;
+    }
+
+    .taskcard {
+        padding: 20px;
+        min-width: 126px;
+        width: auto;
+        height: auto;
+        box-shadow: var(--sha-004015);
+        border-radius: 30px;
+    }
+    
+    .badge-logo {
+        width: 40px;
+        height: 40px;
+    }
+
+    .separator-v {
+        top: 0px;
+        height: calc(100% - 16px);
+        width: 2px;
+    }
+    
+    .taskcard-count {
+        font-size: var(--font-32);
+    }
+
+    .taskcard-text {
+        font-size: var(--font-23);
+    }
+
+    #urgent-date {
+        font-size: var(--font-19);
+    }
+
+    .taskcard.todo .countbox-main {
+        flex-direction: row;
+    }
+    
+}
+
+

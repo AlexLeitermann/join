@@ -1,5 +1,6 @@
 const STORAGE_TOKEN = 'WORBHPZTO20NMYS1WWXZ4CNR8Q8A9DP3WKJEXQ83';
 const STORAGE_URL = 'https://storage.leitermann.online/index.php';
+let isLoadUserLogin = false;
 
 /**
  * Loads data from storage.

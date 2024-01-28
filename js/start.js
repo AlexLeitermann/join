@@ -235,11 +235,9 @@ function btnLogin(event) {
     event.preventDefault();
     const clickedButton = event.submitter;
     if (clickedButton && clickedButton.name === 'userLogin') {
-        console.log('User Login pressed');
         userLogin();
     } else if (clickedButton && clickedButton.name === 'guestLogin') {
-        console.log('Guest Login pressed');
-        guestLogin();
+        theGuestLogin();
     }
 }
 
@@ -263,10 +261,11 @@ async function userLogin() {
 }
 
 
-function guestLogin() {
-    setSessionData('cuid', [-1]);
+async function theGuestLogin() {
+    setSessionData('cuid', -1);
     setSessionData('cuname', 'Guest');
     setSessionData('cuinitials', 'G');
+    window.location.href = 'summary.html';
 }
 
 

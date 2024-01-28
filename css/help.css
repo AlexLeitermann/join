@@ -1,0 +1,50 @@
+.menu#admin {
+    background-color: var(--col-menu-active);
+}
+
+@media (max-width: 1000px) {
+    .menu#admin {
+        background-color: transparent;
+    }
+
+    .menu#admin img {
+        content: url('../img/icon_menu_admin_active.png');
+    }
+
+    .menu#admin span {
+        color: var(--col-main);
+    }
+}
+
+.main {
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    padding: 10px;
+    width: calc(100% - 232px);
+    height: calc(100% - 96px);
+    /* background-color: lightpink; */
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    transition-property: width, height;
+    transition-timing-function: ease-in-out, ease-in-out;
+    transition-delay: 0ms, 0ms;
+    transition-duration: 100ms, 200ms;
+}
+
+
+
+
+
+
+@media (max-width: 1000px) {
+    .main {
+        width: 100%;
+        height: calc(100% - 80px);
+        transition-property: width, height;
+        transition-timing-function: ease-in-out, ease-in-out;
+        transition-delay: 125ms, 0ms;
+        transition-duration: 100ms, 200ms;
+    }
+}

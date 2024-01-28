@@ -8,6 +8,8 @@
         <link rel="stylesheet" href="/css/color.css" />
         <link rel="stylesheet" href="/css/style.css" />
         <link rel="stylesheet" href="/css/summary.css" />
+        <script src="./js/storage.js"></script>
+        <script src="./js/loggedinuser.js"></script>
         <script src="./js/script.js"></script>
         <title>JOIN - Summary</title>
     </head>
@@ -18,67 +20,67 @@
         </div>
         <div class="main">
             <div class="summary-main">
-                <div class="summary-welcome">
-                    <span class="welcome-hello">Good morning,</span><span class="welcome-name">Sofia Müller</span>
+                <div class="summary-welcome" id="summary-welcome">
+                    <span class="welcome-hello">Good morning,</span><span class="welcome-name">Alexander Leitermann</span>
                 </div>
                 <div class="overview-main">
-                    <div class="taskcard large3 flat center">
+                    <div class="taskcard urgent large3 flat center">
                         <div class="countbox-main">
                             <div class="center-cross">
                                 <img class="badge-logo" src="./img/badge_Urgent.png">
-                                <span class="font-48 font-w700" id="urgent-count">1</span>
+                                <span class="taskcard-count" id="urgent-count">1</span>
                             </div>
-                            <span class="font-23">Tasks Urgent</span>
+                            <span class="taskcard-text">Tasks Urgent</span>
                         </div>
                         <div class="separator-v"></div>
                         <div class="datebox">
                             <div><span class="font-33 font-w700" id="urgent-date">October 16, 2023</span></div>
-                            <div><span class="font-23">Upcoming Deadline</span></div>
+                            <div><span class="taskcard-text">Upcoming Deadline</span></div>
                         </div>
                     </div>
-                    <div class="taskcard flat">
+                    <div class="taskcard alltasks flat">
                         <div class="countbox-main">
                             <div class="center-cross">
                                 <img class="badge-logo" src="./img/badge_Board.png">
-                                <span class="font-48 font-w700" id="urgent-count">1</span>
+                                <span class="taskcard-count" id="alltasks-count">1</span>
                             </div>
-                            <span class="font-23 blue">Task in Board</span>
+                            <span class="taskcard-text blue">Task in Board</span>
                         </div>
                     </div>
-                    <div class="taskcard alltasks">
+                    <div class="taskcard todo">
                         <div class="countbox-main">
                             <div class="center-cross">
                                 <img class="badge-logo" src="./img/badge_todo.png">
-                                <span class="font-48 font-w700" id="urgent-count">1</span>
+                                <span class="taskcard-count" id="todo-count">1</span>
                             </div>
-                            <span class="font-23 blue nowrap">Tasks To&#8209;do</span>
+                            <span class="taskcard-text blue nowrap">Tasks To&#8209;do</span>
                         </div>
                     </div>
-                    <div class="taskcard">
+                    <div class="taskcard inprogress">
                         <div class="countbox-main">
                             <div class="center-cross">
                                 <img class="badge-logo" src="./img/badge_Inprogress.png">
-                                <span class="font-48 font-w700" id="urgent-count">1</span>
+                                <span class="taskcard-count" id="inprogress-count">1</span>
                             </div>
-                            <span class="font-23 blue nowrap">Task in<br>Progress</span>
+                            <span class="taskcard-text blue nowrap">Task in<br>Progress</span>
                         </div>
                     </div>
-                    <div class="taskcard">
+                    <div class="taskcard awaiting">
                         <div class="countbox-main">
                             <div class="center-cross">
                                 <img class="badge-logo" src="./img/badge_Awaiting_feedback.png">
-                                <span class="font-48 font-w700" id="urgent-count">1</span>
+                                <span class="taskcard-count" id="awaiting-count">1</span>
                             </div>
-                            <span class="font-23 blue nowrap">Awaiting<br>Feedback</span>
+                            <span class="taskcard-text blue nowrap">Awaiting<br>Feedback</span>
                         </div>
                     </div>
-                    <div class="taskcard">
+                    <div class="taskcard done">
                         <div class="countbox-main">
                             <div class="center-cross">
                                 <img class="badge-logo" src="./img/badge_Done.png">
-                                <span class="font-48 font-w700" id="urgent-count">1</span>
+                                <span class="taskcard-count" id="done-count">1</span>
                             </div>
-                            <span class="font-23 blue nowrap">Tasks<br>Done</span>
+                            <span class="taskcard-text blue nowrap">Tasks<br>Done</span>
                         </div>
                     </div>
                 </div>

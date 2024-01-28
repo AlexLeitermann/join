@@ -9,6 +9,9 @@ document.addEventListener('DOMContentLoaded', async function () {
  */
 async function init() {
     await includeHTML();
+    if(isLoadUserLogin !== false) {
+        initLoggedInUser();        
+    }
 }
 
 
@@ -37,7 +40,8 @@ function browserBack() {
 
 
 function stopPropagation(event) {
-    event.stopPropagation();
+    console.log(event);
+    // event.stopPropagation();
 }
 
 

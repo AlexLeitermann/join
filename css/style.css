@@ -685,6 +685,65 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     transition: all 0.2s ease-in-out;
 }
 
+.user-icon {
+    /* background-color: var(--col-white); */
+    /* width: 40px; */
+    /* height: 40px; */
+    /* aspect-ratio: 1 / 1; */
+    /* border-radius: 100%; */
+    /* border: 2px solid var(--col-black); */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.user-icon:hover {
+    background-color: var(--col-usr-hover);
+}
+
+.useroptions {
+    z-index: 59;
+    position: fixed;
+    top: 80px;
+    right: -200px;
+    padding: 10px;
+    border-radius: 20px;
+    border-top-right-radius: 0;
+    background-color: var(--col-white);
+    box-shadow: var(--sha-004015);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.useroptions:not(.inview) {
+    right: -200px;
+    transition: right 100ms ease-in-out;
+}
+
+.useroptions.inview {
+    right: 16px;
+    transition: right 100ms ease-in-out;
+}
+
+.useroptions-link {
+    width: 100%;
+    text-decoration: none;
+    text-align: right;
+    color: var(--col-light-grey);
+    padding: 8px 16px;
+    border-radius: 8px;
+    background-color: var(--col-white);
+}
+
+.useroptions-link:hover {
+    /* color: var(--col-main); */
+    background-color: var(--col-menu-hover);
+}
+
+
+
 
 
 /* ############################################################ */
