@@ -49,6 +49,16 @@
                     <button class="button" onclick="resetTasks()" id="btn-reset-task">Erase</button>
                 </div>
             </div>
+            <div class="container">
+                <div class="description">
+                    <span>Board</span><span id="statusBoard">Guest</span>
+                </div>
+                <div class="inhalt">
+                    <button class="button" onclick="logBoard()">C-Log</button>
+                    <input type="number" name="boardId" min="-1" value="-1" id="boardId" class="inp-id" onchange="changeBoardID()">
+                    <button class="button" onclick="resetBoard()" id="btn-reset-board">Erase</button>
+                </div>
+            </div>
         </div>
     </body>
 </html>

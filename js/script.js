@@ -41,7 +41,7 @@ function browserBack() {
 
 function stopPropagation(event) {
     console.log(event);
-    // event.stopPropagation();
+    event.stopPropagation();
 }
 
 
@@ -160,6 +160,22 @@ function initialsFrom(string) {
 }
 
 
+/**
+ * Function for escaping characters in HTML text.
+ * 
+ * @param {string} string - Text in which the special characters are to be replaced.
+ * @returns - The finished text.
+ */
+function maskSpecialChars(string) {
+    const specialChars = {
+        '&': '&amp;',
+        '<': '&lt;',
+        '>': '&gt;',
+        '"': '&quot;',
+        "'": '&#39;',
+      };
+    return string.replace(/[&<>"']/g, char => specialChars[char]);
+}
 
 
 

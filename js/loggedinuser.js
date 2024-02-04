@@ -1,6 +1,6 @@
 let cuid = +getSessionData("cuid");
-let cuname = getSessionData("cuname");
-let cuinitials = getSessionData("cuinitials") || '';
+let cuname = maskSpecialChars(getSessionData("cuname"));
+let cuinitials = maskSpecialChars(getSessionData("cuinitials") || '');
 let isNotAUser = true;
 
 /**

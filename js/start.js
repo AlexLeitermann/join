@@ -5,6 +5,7 @@ document.addEventListener('DOMContentLoaded', async function () {
 let users = [];
 let contacts = [];
 let tasks = [];
+let board = [];
 let lastContactId = 0;
 let lastUserId = 0;
 let lastTaskId = 0;
@@ -69,11 +70,9 @@ function signup() {
     const FORM_CONFPASS = document.getElementById('signup-confirm-password');
     const FORM_PRIVACYPOLICY = document.getElementById('signup-privacypolicy');
     if(checkValidations(FORM_NAME.value, FORM_EMAIL.value, FORM_PASSWORD.value, FORM_CONFPASS.value, FORM_PRIVACYPOLICY) == 63) {
-        // alles ok
         console.log('OK');
         createNewUser(FORM_NAME.value, FORM_EMAIL.value, FORM_PASSWORD.value);
     } else {
-        // es fehlt was
         console.log('NOT');
         // signupError(checkValidations(FORM_NAME.value, FORM_EMAIL.value, FORM_PASSWORD.value, FORM_CONFPASS.value, FORM_PRIVACYPOLICY));
     }
@@ -169,17 +168,15 @@ async function createNewUser(newName, newEmail, newPassword) {
     lastUserId++;
     lastContactId++;
     await calcHash(newPassword).then( (passHex) => hashPassword = passHex );
-    console.log(newPassword+':', hashPassword);
     let dataSet1 = newDatasetUser(newName, newEmail, hashPassword);
     let dataSet2 = newDatasetContact(newName, newEmail);
-
     users.push(dataSet1[0]);
     contacts.push(dataSet2[0]);
-
     answer += (await saveData('users', users)) * 1;
     answer += (await saveData('contacts-id' + lastUserId, contacts)) * 2;
     answer += (await saveData('tasks-id' + lastUserId, tasks)) * 4;
-    console.log('createNewUser:', answer);
+    answer += (await saveData('board-id' + lastUserId, board)) * 8;
+    console.log('createNewUser:', answer); // Best: answer == 15
 }
 
 

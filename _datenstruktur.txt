@@ -2,7 +2,7 @@ Online-Storage:
 ===============
 
 Users:
------
+------
 id              - number
 initials        - text
 name            - text
@@ -11,10 +11,9 @@ email           - text
 password        - text (hash)
 
 
-Contacts:
----------
+Contacts(-id?):
+---------------
 id              - number
-userid          - number
 assigned        - number
 name            - text
 initials        - text
@@ -23,10 +22,9 @@ phone           - text
 badgecolor      - number
 
 
-tasks:
-------
+tasks(-id?):
+------------
 id              - number
-userid          - number
 title           - text (r)
 description     - text
 date            - date (r)
@@ -37,13 +35,20 @@ subtasks        - array
 Contacts        - array
 
 
-localStorage:
-=============
+board(-id?):
+------------
+todo            - array
+inprogress      - array
+feedback        - array
+done            - array
 
-cuid            - json
-    name        - text
-    initials    - text
-    id          - number
+
+sessionStorage:
+===============
+
+cuid            - number
+cuname          - text
+cuinitials      - text
 
 
 

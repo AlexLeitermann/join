@@ -198,7 +198,7 @@
 
     .welcome-hello {
         padding-left: 16px;
-        font-size: var(--font-32);
+        font-size: var(--font-48);
     }
 
     .welcome-name {
@@ -287,11 +287,11 @@
 
     .welcome-hello {
         padding-left: 16px;
-        font-size: var(--font-19);
+        font-size: var(--font-33);
     }
 
     .welcome-name {
-        font-size: var(--font-23);
+        font-size: var(--font-33);
     }
 
     .summary-main {
@@ -310,6 +310,7 @@
 
     .taskcard.urgent {
         padding: 20px;
+        gap: 20px;
     }
 
     .center {
@@ -326,26 +327,26 @@
     }
     
     .badge-logo {
-        width: 40px;
-        height: 40px;
+        width: 60px;
+        height: 60px;
     }
 
     .separator-v {
         top: 0px;
-        height: calc(100% - 16px);
+        height: calc(100% - 0px);
         width: 2px;
     }
     
     .taskcard-count {
-        font-size: var(--font-32);
+        font-size: var(--font-47);
     }
 
     .taskcard-text {
-        font-size: var(--font-23);
+        font-size: var(--font-19);
     }
 
     #urgent-date {
-        font-size: var(--font-19);
+        font-size: var(--font-21);
     }
 
     .taskcard.todo .countbox-main {

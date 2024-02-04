@@ -11,8 +11,8 @@
         <link rel="stylesheet" href="/css/editcontact.css" />
         <link rel="stylesheet" href="/css/contacts.css" />
         <script src="./js/storage.js"></script>
-        <script src="./js/loggedinuser.js"></script>
         <script src="./js/script.js"></script>
+        <script src="./js/loggedinuser.js"></script>
         <script src="./js/contact.js"></script>
         <title>JOIN - Contacts</title>
     </head>
@@ -28,14 +28,15 @@
                 <div class="contactlist-titlebox">
                     <button type="button" class="btn-primary" id="addcontact-btn" onclick="newContactView(event)"><span>Add new contact </span> <img src="./img/icon_add_contact_wh.png"></button>
                 </div>
-                <div class="contactlist-listbox" onclick="openContact(-1, event)">
+                <div class="contactlist-listbox" id="contact-list" onclick="openContact(-1, event)">
+                    <div class="spinner"></div>
                     <!--  -->
-                    <div class="contactlist-letterbox">
+                    <!-- <div class="contactlist-letterbox">
                         <span class="contactlist-letter">N</span>
                     </div>
-                    <div class="contactlist-hr"></div>
+                    <div class="contactlist-hr"></div> -->
                     <!--  -->
-                    <div id="contactlist-itembox-1" class="contactlist-itembox" onclick="openContact(1, event)">
+                    <!-- <div id="contactlist-itembox-1" class="contactlist-itembox" onclick="openContact(1, event)">
                         <div>
                             <div class="contactlist-itembox-badge">
                                 <div class="contactlist-itembox-badge-circle bdg-2">
@@ -47,9 +48,9 @@
                             <span class="contactlist-itembox-name">Natascha Birka</span>
                             <span class="contactlist-itembox-mail">natascha.birka@me.com</span>
                         </div>
-                    </div>
+                    </div> -->
                     <!--  -->
-                    <div id="contactlist-itembox-2" class="contactlist-itembox" onclick="openContact(2, event)">
+                    <!-- <div id="contactlist-itembox-2" class="contactlist-itembox" onclick="openContact(2, event)">
                         <div>
                             <div class="contactlist-itembox-badge">
                                 <div class="contactlist-itembox-badge-circle bdg-0">
@@ -61,7 +62,7 @@
                             <span class="contactlist-itembox-name">Noch nichtda (You)</span>
                             <span class="contactlist-itembox-mail">nochnichtda@freenet.de</span>
                         </div>
-                    </div>
+                    </div> -->
                     <!--  -->
                     <div class="contactlist-endbox"></div>
                 </div>
@@ -69,11 +70,11 @@
             <!--  -->
             <div class="contactview-main" id="contactview-main">
                 <div class="contactview-top">
-                    <div class="badge-120 bdg-2">
-                        <span class="badge-120-circle">AM</span>
+                    <div class="badge-120 bdg-2" id="contact-single-info-badge-circle">
+                        <span class="badge-120-circle" id="contact-single-info-badge-text">AM</span>
                     </div>
                     <div class="contactview-namebox">
-                        <span class="contactview-name">Anton Mayer</span>
+                        <span class="contactview-name" id="contact-single-info-name-text">Anton Mayer</span>
                         <div class="contactview-options">
                             <button id="contact-edit" class="contact-options" onclick="editContactView(event)"><img src="./img/icon_edit_main.png"><span>Edit</span></button>
                             <button id="contact-delete" class="contact-options"><img src="./img/icon_delete_main.png"><span>Delete</span></button>
@@ -86,11 +87,11 @@
                 <div class="contactview-data">
                     <div class="contactview-data-set">
                         <span class="font-w700">Email</span>
-                        <span class="blue2">antom@gmail.com</span>
+                        <span class="blue2" id="contact-single-info-email-text">antom@gmail.com</span>
                     </div>
                     <div class="contactview-data-set">
                         <span class="font-w700">Phone</span>
-                        <span>+49 1111 111 11 1</span>
+                        <span id="contact-single-info-phone-text">+49 1111 111 11 1</span>
                     </div>
                 </div>
             </div>
@@ -112,7 +113,7 @@
                 <div class="addcontact-content-main">
                     <div class="addcontact-contentbox">
                         <div class="addcontact-content-badgebox">
-                            <div class="badge-120">AM</div>
+                            <div class="badge-120"><img src="./img/icon_person_big_wh.png"></div>
                         </div>
                         <!--  -->
                         <div class="addcontact-content-inputbox">

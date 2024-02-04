@@ -2,11 +2,12 @@ document.addEventListener('DOMContentLoaded', async function () {
     await initAdmin();
 });
 
+let users = [];
 let contacts = [];
 let tasks = [];
-let users = [];
-let lastContactId = 0;
+let board = [];
 let lastUserId = 0;
+let lastContactId = 0;
 let lastTaskId = 0;
 
 
@@ -23,9 +24,11 @@ async function loadFromOnlineStorage(id = -1) {
     if(id == -1) {
         tasks = await returnJsonAtLoadData('tasks');
         contacts = await returnJsonAtLoadData('contacts');
+        board = await returnJsonAtLoadData('board');
     } else {
         tasks = await returnJsonAtLoadData('tasks-id'+id);
         contacts = await returnJsonAtLoadData('contacts-id'+id);
+        board = await returnJsonAtLoadData('board-id'+id);
     }
 }
 
@@ -63,6 +66,19 @@ async function logTasks() {
 }
 
 
+async function logBoard() {
+    let id = document.getElementById('boardId');
+    if(id.value < 0) {
+        await initAdmin();
+        console.log('Board:', lastTaskId, tasks);
+    } else {
+        await loadFromOnlineStorage(id.value);
+        checkLastTaskId();
+        console.log(`Board-id${id.value}`, lastTaskId, tasks);
+    }
+}
+
+
 // ------------------------------------------------------------
 async function resetUsers() {
     console.log('Clear Users:', await saveData('users', []));
@@ -89,6 +105,16 @@ async function resetTasks() {
 }
 
 
+async function resetBoard() {
+    let id = document.getElementById('boardId');
+    if(id.value < 0) {
+        console.log('Clear Board:', await saveData('board', []));
+    } else {
+        console.log(`Delete Board-id${id.value}:`, await deleteData('board-id'+id.value));
+    }
+}
+
+
 // ------------------------------------------------------------
 function changeContactID() {
     let id = document.getElementById('contactId').value;
@@ -110,6 +136,18 @@ function changeTaskID() {
     } else {
         document.getElementById('statusTask').innerHTML = `ID: ${id}`;
         document.getElementById('btn-reset-task').innerHTML = `Delete`;
+    }
+}
+
+
+function changeBoardID() {
+    let id = document.getElementById('boardId').value;
+    if(id == -1) {
+        document.getElementById('statusBoard').innerHTML = `Guest`;
+        document.getElementById('btn-reset-board').innerHTML = `Erase`;
+    } else {
+        document.getElementById('statusBoard').innerHTML = `ID: ${id}`;
+        document.getElementById('btn-reset-board').innerHTML = `Delete`;
     }
 }
 

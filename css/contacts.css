@@ -77,6 +77,7 @@
     height: 56px;
     gap: 10px;
     cursor: pointer;
+    justify-content: center;
 }
 
 .contactlist-listbox {
@@ -274,6 +275,11 @@
     display: flex;
     flex-direction: column;
     gap: 15px;
+}
+
+/* ############################################################ */
+.addcontact-content-badgebox .badge-120 {
+    background-color: var(--col-placeholder);
 }
 
 

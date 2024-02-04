@@ -163,6 +163,30 @@ body {
     word-wrap: unset;
 }
 
+@keyframes spinner {
+    to {transform: rotate(360deg);}
+}
+
+.spinner {
+    height: 50px;
+    width: 100%;
+}
+   
+.spinner:before {
+    content: '';
+    box-sizing: border-box;
+    position: absolute;
+    top: 50%;
+    left: calc(50% - 20px);
+    width: 40px;
+    height: 40px;
+    margin-top: -10px;
+    margin-left: -10px;
+    border-radius: 50%;
+    border-top: 3px solid var(--col-main);
+    border-right: 3px solid transparent;
+    animation: spinner .4s linear infinite;
+  }
 
 /* ############################################################ */
 /* ----- buttons ----- */
@@ -580,6 +604,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 
 /* ############################################################ */
 .badge-120 {
+    min-width: 120px;
     width: 120px;
     height: 120px;
     border-radius: 999px;
@@ -602,6 +627,8 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 
 
 
+/* ############################################################ */
+/* ############################################################ */
 /* ############################################################ */
 /* ----- header ----- */
 .header-main {
@@ -746,6 +773,8 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 
 
 
+/* ############################################################ */
+/* ############################################################ */
 /* ############################################################ */
 /* ----- footer ----- */
 .footer-main {
