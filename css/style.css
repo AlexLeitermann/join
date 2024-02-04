@@ -616,6 +616,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 }
 
 .badge-120-circle {
+    color: var(--col-white);
     font-family: Inter;
     font-size: var(--font-47);
     font-weight: 500;
