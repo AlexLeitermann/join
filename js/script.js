@@ -2,6 +2,14 @@ const active = 'active';
 document.addEventListener('DOMContentLoaded', async function () {
     await init();
 });
+document.addEventListener('click', function() {
+    if (document.getElementById('useroptions')) {
+        const obj = document.getElementById('useroptions');
+        if (obj.classList.contains('inview')) {
+            obj.classList.remove('inview');
+        } 
+    }
+});
 
 
 /**
@@ -119,9 +127,7 @@ async function calcHash(input) {
  * @returns - index in Array
  */
 function idToIndex(id, arr = users) {
-    return arr.findIndex(function (item, i) {
-        return item.id === id;
-    });
+    return arr.findIndex( item => item.id === id);
 }
 
 

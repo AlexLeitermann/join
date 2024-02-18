@@ -99,7 +99,16 @@ async function deleteItem(key) {
 
 
 function getLocalData(key) {
-    return JSON.parse(localStorage.getItem(key));
+    const readData = localStorage.getItem(key);
+    if(readData) {
+        try {
+            return JSON.parse(readData);
+        } catch (error) {
+            return readData;
+        }
+    } else {
+        return null;
+    }
 }
 
 
@@ -109,7 +118,16 @@ function setLocalData(key, value) {
 
 
 function getSessionData(key) {
-    return JSON.parse(sessionStorage.getItem(key));
+    const readData = sessionStorage.getItem(key);
+    if(readData) {
+        try {
+            return JSON.parse(readData);
+        } catch (error) {
+            return readData;
+        }
+    } else {
+        return null;
+    }
 }
 
 

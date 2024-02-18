@@ -110,17 +110,25 @@ function isValidPassword(input) {
 }
 
 
+/**
+ * Checks if an account with the given email is unset.
+ * @param {string} email - The email to check.
+ * @returns {boolean} Returns true if the account is unset, false otherwise.
+ */
 function isAccountUnset(email) {
-    let result = true;
-    if(users.length > 0) {
-        users.forEach( (user) => {
-            if(user.email == email) {
-                result = false;
-            }
-        } );
-    }
-    return result;
+    return users.every(user => user.email !== email);
 }
+// function isAccountUnset(email) {
+//     let result = true;
+//     if(users.length > 0) {
+//         users.forEach( (user) => {
+//             if(user.email == email) {
+//                 result = false;
+//             }
+//         } );
+//     }
+//     return result;
+// }
 
 
 /**

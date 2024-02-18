@@ -110,14 +110,14 @@ function editContactView(event) {
 /**
  * Renders the collection of contacts.
  */
-function renderContactList() {
+function renderContactList(activeID = null) {
     let newContent = "", firstLetter = "";
     for (let i = 0; i < contactsSorted.length; i++) {
-        let isUser = isCurrentUserInfo(contactsSorted[i].userid);
+        let you = isCurrentUserInfo(contactsSorted[i].userid);
         let answer = nextLetter(contactsSorted[i].initials[0], firstLetter);
         firstLetter = answer[1];
         newContent += answer[0];
-        newContent += renderListEntry(i, isUser);
+        newContent += renderListEntry(i, you, contactsSorted[i].id == activeID ? true : false);
     }
     if (newContent == "") { newContent += renderLetterbox(); }
     document.getElementById("contact-list").innerHTML = newContent;
@@ -176,21 +176,22 @@ function renderLetterbox(letter = "No Contacts") {
  * Compiles the HTML code for a contact's list entry.
  * 
  * @param {number} i - i = index number in the sorted contact list.
- * @param {number} isUser - The additional text from the function isCurrentUserInfo
+ * @param {number} you - The additional text from the function isCurrentUserInfo
  * @returns - Returns HTML code to render.
  */
-function renderListEntry(i, isUser = "") {
+function renderListEntry(i, you = "", isActive = false) {
+    let setActive = isActive ? ` ${active}` : "";
     return `
-        <div id="contactlist-itembox-${contactsSorted[i].id}" class="contactlist-itembox" onclick="openContact(${contactsSorted[i].id}, event)">
+        <div id="contactlist-itembox-${contactsSorted[i].id}" class="contactlist-itembox${setActive}" onclick="openContact(${contactsSorted[i].id}, event)">
             <div>
                 <div class="contactlist-itembox-badge">
-                    <div class="contactlist-itembox-badge-circle bdg-${contactsSorted[i]["badgecolor"]}">
+                    <div class="contactlist-itembox-badge-circle bdg-${contactsSorted[i].badgecolor}">
                         <span class="contactlist-itembox-badge-text">${contactsSorted[i].initials}</span>
                     </div>
                 </div>
             </div>
             <div class="contactlist-itembox-namebox">
-                <span class="contactlist-itembox-name">${contactsSorted[i].name}${isUser}</span>
+                <span class="contactlist-itembox-name">${contactsSorted[i].name}${you}</span>
                 <span class="contactlist-itembox-mail">${contactsSorted[i].email}</span>
             </div>
         </div>
@@ -260,17 +261,23 @@ function editContactPopup(id) {
 }
 
 
-function deleteContact(id) {
+/**
+ * 
+ */
+function deleteContact() {
+    let id = +document.getElementById("editcontact-id").value;
     console.log('Delete Contact now', id);
 }
 
 
+/**
+ * 
+ */
 async function saveEditContact() {
     let id = +document.getElementById("editcontact-id").value;
-    let index = idToIndex(id, contactList);
+    let index = idToIndex(id, contacts);
     await updateContactFields(index);
-    // await saveData("contacts-id"+cuid, contacts);
-    updateLocalStorage(index);
+    updateSessionStorage(index);
     contactsSorted = sortContacts(contacts);
     renderSaveEditContact(id);
 }
@@ -282,11 +289,16 @@ async function saveEditContact() {
  * @param {number} index - Index for the contact details in the contact list
  */
 async function updateContactFields(index) {
-    contactList[index].name = document.getElementById("editconname").value;
-    contactList[index].initials = initialsFrom(document.getElementById("editconname").value);
-    contactList[index].email = document.getElementById("editconemail").value;
-    contactList[index].phone = document.getElementById("editconphone").value;
-    await updateUserFields(index);
+    contacts[index].name = document.getElementById("editcontact-name").value;
+    contacts[index].initials = initialsFrom(document.getElementById("editcontact-name").value);
+    contacts[index].email = document.getElementById("editcontact-email").value;
+    contacts[index].phone = document.getElementById("editcontact-phone").value;
+    if (cuid == -1 && cuname == 'Guest') {
+        await saveData("contacts", contacts);
+    } else if (cuid > -1) {
+        await saveData("contacts-id"+cuid, contacts);
+    }
+    // await updateUserFields(index);
 }
 
 
@@ -296,14 +308,25 @@ async function updateContactFields(index) {
  * @param {number} index - Index for the contact details in the contact list
  */
 async function updateUserFields(index) {
-    let userIndex = idToIndex(contactList[index].userid, userList);
-    if(isCurrentUser(contactList[index].userid)) {
-        userList[userIndex].name = contactList[index].name;
-        userList[userIndex].initials = contactList[index].initials;
-        userList[userIndex].email = contactList[index].email;
-        userList[userIndex].phone = contactList[index].phone;
-        await saveData("users", userList);
+    let userIndex = idToIndex(contacts[index].userid, users);
+    if(isCurrentUser(contacts[index].userid)) {
+        users[userIndex].name = contacts[index].name;
+        users[userIndex].initials = contacts[index].initials;
+        users[userIndex].email = contacts[index].email;
+        users[userIndex].phone = contacts[index].phone;
+        await saveData("users", users);
     }
+}
+
+
+/**
+ * Helper function: Checks the current user via the user ID.
+ * 
+ * @param {number} userId - Id for user
+ * @returns - True or false.
+ */
+function isCurrentUser(userId) {
+    return userId === cuid;
 }
 
 
@@ -312,13 +335,15 @@ async function updateUserFields(index) {
  * 
  * @param {*} index - Index for the contact details in the contact list
  */
-function updateLocalStorage(index) {
-    localStorage.setItem('loggedInUser', contactList[index].name);
-    if(localStorage.getItem("rememberEmail")) {
-        localStorage.setItem('rememberEmail', contactList[index].email);
+function updateSessionStorage(index) {
+    sessionStorage.setItem('cuname', contacts[index].name);
+    if(sessionStorage.getItem("rememberEmail")) {
+        sessionStorage.setItem('rememberEmail', contacts[index].email);
     }
-    localStorage.setItem('loggedInUser', contactList[index].name);
-    loggedInUser = localStorage.getItem("loggedInUser");
+    sessionStorage.setItem('cuname', contacts[index].name);
+    sessionStorage.setItem('cuinitials', contacts[index].initials);
+
+    cuname = sessionStorage.getItem("cuname");
 }
 
 
@@ -328,10 +353,11 @@ function updateLocalStorage(index) {
  * @param {number} id - Id of the selected contact.
  */
 function renderSaveEditContact(id) {
-    renderHeaderUserName();
-    renderContactList();
+    setHeaderBadge();
+    renderContactList(id);
     renderSingleView(id);
-    openEditCon();
+    document.getElementById('editcontact-main').classList.remove(active);
+    // openEditCon();
 }
 
 

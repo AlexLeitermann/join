@@ -21,7 +21,6 @@
     position: fixed;
     top: 96px;
     left: 232px;
-    /* padding: 32px 88px 0px; */
     width: calc(100% - 232px);
     height: calc(100% - 96px);
     overflow-y: auto;

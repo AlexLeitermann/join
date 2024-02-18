@@ -33,7 +33,7 @@ async function loadFromOnlineStorage(id = -1) {
 }
 
 
-// ############################################################
+// ##############################################################################################################
 async function logUsers() {
     await initAdmin();
     console.log('Users:', lastUserId, users);
@@ -41,7 +41,7 @@ async function logUsers() {
 
 
 async function logContacts() {
-    let id = document.getElementById('contactId');
+    const id = document.getElementById('contactId');
     if(id.value < 0) {
         await initAdmin();
         console.log('Contacts:', lastContactId, contacts);
@@ -54,7 +54,7 @@ async function logContacts() {
 
 
 async function logTasks() {
-    let id = document.getElementById('taskId');
+    const id = document.getElementById('taskId');
     if(id.value < 0) {
         await initAdmin();
         console.log('Tasks:', lastTaskId, tasks);
@@ -67,7 +67,7 @@ async function logTasks() {
 
 
 async function logBoard() {
-    let id = document.getElementById('boardId');
+    const id = document.getElementById('boardId');
     if(id.value < 0) {
         await initAdmin();
         console.log('Board:', lastTaskId, tasks);
@@ -79,14 +79,14 @@ async function logBoard() {
 }
 
 
-// ------------------------------------------------------------
+// ##############################################################################################################
 async function resetUsers() {
     console.log('Clear Users:', await saveData('users', []));
 }
 
 
 async function resetContacts() {
-    let id = document.getElementById('contactId');
+    const id = document.getElementById('contactId');
     if(id.value < 0) {
         console.log('Clear Contacts:', await saveData('contacts', []));
     } else {
@@ -96,7 +96,7 @@ async function resetContacts() {
 
 
 async function resetTasks() {
-    let id = document.getElementById('taskId');
+    const id = document.getElementById('taskId');
     if(id.value < 0) {
         console.log('Clear Tasks:', await saveData('tasks', []));
     } else {
@@ -106,7 +106,7 @@ async function resetTasks() {
 
 
 async function resetBoard() {
-    let id = document.getElementById('boardId');
+    const id = document.getElementById('boardId');
     if(id.value < 0) {
         console.log('Clear Board:', await saveData('board', []));
     } else {
@@ -115,9 +115,9 @@ async function resetBoard() {
 }
 
 
-// ------------------------------------------------------------
+// ##############################################################################################################
 function changeContactID() {
-    let id = document.getElementById('contactId').value;
+    const id = document.getElementById('contactId').value;
     if(id == -1) {
         document.getElementById('statusContact').innerHTML = `Guest`;
         document.getElementById('btn-reset-contact').innerHTML = `Erase`;
@@ -129,7 +129,7 @@ function changeContactID() {
 
 
 function changeTaskID() {
-    let id = document.getElementById('taskId').value;
+    const id = document.getElementById('taskId').value;
     if(id == -1) {
         document.getElementById('statusTask').innerHTML = `Guest`;
         document.getElementById('btn-reset-task').innerHTML = `Erase`;
@@ -141,7 +141,7 @@ function changeTaskID() {
 
 
 function changeBoardID() {
-    let id = document.getElementById('boardId').value;
+    const id = document.getElementById('boardId').value;
     if(id == -1) {
         document.getElementById('statusBoard').innerHTML = `Guest`;
         document.getElementById('btn-reset-board').innerHTML = `Erase`;
@@ -152,10 +152,32 @@ function changeBoardID() {
 }
 
 
-// ------------------------------------------------------------
+function changeAdminID() {
+    const id = document.getElementById('adminId').value;
+    document.getElementById('statusAdmin').innerHTML = `ID: ${id}`;
+}
 
 
+// ##############################################################################################################
 
+
+async function deleteAdmin() {
+    await initAdmin();
+    const id = +document.getElementById('adminId').value;
+    const index = idToIndex(id, users);
+    delete users[index].admin;
+    console.log('Delete Admin:', saveData('users', users));
+}
+
+
+async function setAdmin() {
+    await initAdmin();
+    const id = +document.getElementById('adminId').value;
+    const index = idToIndex(id, users);
+    console.log('id, index:', id, index);
+    users[index].admin = 1;
+    console.log('Set Admin:', index,  saveData('users', users));
+}
 
 
 

@@ -59,6 +59,16 @@
                     <button class="button" onclick="resetBoard()" id="btn-reset-board">Erase</button>
                 </div>
             </div>
+            <div class="container">
+                <div class="description">
+                    <span>Admin</span><span id="statusAdmin">ID: 0</span>
+                </div>
+                <div class="inhalt">
+                    <button class="button" onclick="setAdmin()">SET</button>
+                    <input type="number" name="adminId" min="0" value="0" id="adminId" class="inp-id" onchange="changeAdminID()">
+                    <button class="button" onclick="deleteAdmin()" id="btn-delete-admin">Delete</button>
+                </div>
+            </div>
         </div>
     </body>
 </html>
